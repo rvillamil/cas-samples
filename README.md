@@ -2,17 +2,20 @@
 
 Con este proyecto, pretendo explorar las posibilidades de CAS, entender el producto y sus posibilidades.
 
-He montado un CAS Server, con la configuracion standalone para su despliegue en su servidor de aplicaciones. Ademas trataré de incoporar clientes CAS que utilicen los distintos protocolos soportados:
+En este momento, tenemos implementado lo siguiente:
 
-- CAS
-- SAML
-- OAuth
+- [Servidor CAS](cas-server/cas-overlay-server/README.md) en 'cas-server/cas-overlay-server' con las funcionalidades,
+  - Protocolo CAS
+  - Configuración del servidor 'Standalone'
+  - JSON Service Registry : Registro de aplicaciones clientes CAS
+- Aplicacion cliente CAS (link al readme del CAS), 'cas-clients-examples/cas-secured-app-one'. Implementada utilizando el soporte de springboot, utiliza el protocolo CAS para conectarse con el servidor CAS
 
 Me he apoyado en la documentacion y el código de [Baeldung](http://www.baeldung.com/spring-security-cas-sso)
 
-Mis dieses para Baeldung
+Mis dieses para Baeldung ;)
 
-# Modificaciones sobre la plantilla original
+---> LLEVAR al Readme del CAS ...
+## Modificaciones sobre la plantilla original del servidor de CAS
 
 Me he descargado y modificado la plantilla [CAS Overlay Template](https://github.com/apereo/cas-overlay-template) modificando el fichero
 'build.sh', remplazando el comando 'mvnw' por el 'mvn' para evitar problemas con algún proxy
@@ -35,7 +38,7 @@ Por ultimo ..
 $sudo keytool -import -alias thekeystore -storepass changeit -file thekeystore.crt -keystore /etc/ssl/certs/java/cacerts
 ```
 
-# Despliegue del CAS Server en modo 'Standalone'
+## Despliegue del CAS Server en modo 'Standalone'
 
 Hemos elegido el perfil 'Standalone' siguiendo la documentacion de [Aepero](https://apereo.github.io/cas/development/installation/Configuration-Server-Management.html).
 
@@ -50,7 +53,7 @@ $sudo ln -s [path_this_project]/etc/cas /etc/cas
  the setting name cas.standalone.configurationDirectory
  and otherwise falls back to using /etc/cas/config as the configuration directory"
 
-## Configurar el 'Cas Server' integrado con eclipse y Tomcat 8.X
+### Configurar el 'Cas Server' integrado con eclipse y Tomcat 8.X
 
 Se trata de instalar en el eclipse el Tomcat 8.5 y cambiar el 'server.xml', descomentando las líneas que se refieren al HTTPS de esta forma:
 
@@ -64,7 +67,7 @@ Se trata de instalar en el eclipse el Tomcat 8.5 y cambiar el 'server.xml', desc
     </Connector>
 ```
 
-## Iniciar CAS desde la consola: Executable WAR
+### Iniciar CAS desde la consola: Executable WAR
 
 Para iniciar el CAS Server desde una terminal, utilizando la configutracion de '/etc/cas', empaquetamos el WAR así:
 
@@ -78,7 +81,7 @@ $sh build.sh package
 $sh build.sh run
 ```
 
-# URL de acceso al CAS Server desplegado
+## URL de acceso al CAS Server desplegado
 
 -  https://localhost:8443/cas/login , o bien,  http://localhost:8080/cas/login
 
