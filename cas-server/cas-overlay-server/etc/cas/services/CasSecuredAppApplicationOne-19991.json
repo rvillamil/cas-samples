@@ -1,0 +1,8 @@
+{
+  "@class" : "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" : "^http://localhost:9001/login/cas",
+  "name" : "RVP CAS Spring Secured App",
+  "description": "CasSecuredAppApplicationOne: This is a Spring App that usses the CAS Server and CAS Protocol for it's authentication",
+  "id" : 19991,
+  "evaluationOrder" : 1
+}
