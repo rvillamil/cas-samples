@@ -120,6 +120,17 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <id>exec</id>
+	      <dependencies>
+    
+	    <!--  we use the JSON Service Registry method for
+         registering a service with the server. -->
+        <dependency>
+          <groupId>org.apereo.cas</groupId>
+          <artifactId>cas-server-support-json-service-registry</artifactId>
+          <version>${cas.version}</version>
+        </dependency>
+
+	      </dependencies>
             <properties>
                 <mainClassName>org.apereo.cas.mgmt.web.CasManagementWebApplication</mainClassName>
                 <isExecutable>true</isExecutable>
