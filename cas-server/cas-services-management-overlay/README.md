@@ -13,6 +13,10 @@ Services management web application Maven overlay for CAS with externalized conf
 
 * JDK 1.8+
 
+# Configuration
+
+The `etc/cas` directory contains the configuration files and directories that need to be copied to `/etc/cas/`.
+
 # Build
 
 To see what commands are available to the build script, run:
@@ -48,8 +52,8 @@ you will need to evaluate the build script and make sure the configuration files
 
 CAS will be available at:
 
-* `http://cas.server.name:8080/cas-management`
-* `https://cas.server.name:8443/cas-management`
+* `http://localhost:8080/cas-management`
+* `https://localhost:8443/cas-management`
 
 ## External
 

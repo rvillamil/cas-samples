@@ -15,11 +15,7 @@ Generic CAS WAR overlay to exercise the latest versions of CAS. This overlay cou
 
 # Configuration
 
-The `etc` directory contains the configuration files and directories that need to be copied or linked to `/etc/cas/config`.
-
-```bash
-$sudo ln -s [path_this_project]/etc/cas /etc/cas
-```
+The `etc/cas` directory contains the configuration files and directories that need to be copied to `/etc/cas/`.
 
 # Build
 
@@ -43,25 +39,7 @@ To update `SNAPSHOT` versions run:
 
 # Deployment
 
-- Create a keystore file `thekeystore` under `/etc/cas`. Use the password `changeit` for both the keystore and the key/certificate entries.
-
-```bash
-$keytool -genkey -keyalg RSA -alias thekeystore -keystore thekeystore -storepass changeit -validity 360 -keysize 2048
-```
-
-"It’s important to use localhost when prompted for a first and last name, organization name and even organization unit. Failure to do this may lead an to error during SSL Handshake. Other fields such as city, state and country can be set as appropriate."
-
-```bash
-$keytool -export -alias thekeystore -file thekeystore.crt -keystore thekeystore
-```
-
-and finally ...
-
-```bash
-$sudo keytool -import -alias thekeystore -storepass changeit -file thekeystore.crt -keystore /etc/ssl/certs/java/cacerts
-```
-
-- Ensure the keystore is loaded up with keys and certificates of the server.
+Ensure the keystore is loaded up with keys and certificates of the server.
 
 e.g. server.xml in Tomcat 8.X:
 
