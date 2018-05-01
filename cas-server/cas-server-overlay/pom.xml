@@ -145,6 +145,13 @@
           <version>${cas.version}</version>
         </dependency>
          -->
+         <!-- Delegate autenticaction in SAML2 providers, OAuth providers.. -->
+         <dependency>
+        <groupId>org.apereo.cas</groupId>
+          <artifactId>cas-server-support-pac4j-webflow</artifactId>
+        <version>${cas.version}</version>
+    </dependency>
+
       </dependencies>
     </profile>
 
