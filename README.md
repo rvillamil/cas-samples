@@ -45,19 +45,38 @@ e.g. TOMCAT 8.5 server.xml in Tomcat 8.X:
 
 3 - Crear el directorio /etc/cas
 
-4 - Ejecutar el comando ./build.sh package
+4 - En el directorio `cas-server/cas-server-overlay`, ejecutar los comandos
 
-5 - On a successful deployment via the following methods, CAS will be available at:
+```bash
+$./build package
+$./build copy
+```
+
+5 - En el directorio `cas-server/cas-services-management-overlay/`, ejecutar los comandos
+
+```bash
+$./build package
+$./build copy
+```
+
+5 - On a successful deployment via the following methods:
+
+- CAS will be available at:
 
   - `http://localhost:8080/cas`
   - `https://localhost:8443/cas`
+
+- CAS Management will be available at:
+  - `http://localhost:8080/cas-management`
+  - `https://localhost:8443/cas-management`
+
 
 6 - Default user and password:
 
  - username: casuser
  - password: Mellon
 
-Importante, Cada vez que cambiemos algún fichero de condiguración, ejecutar el comando que copia a `/etc/cas``
+Importante, Cada vez que cambiemos algún fichero de condiguración de cas o cas-management, ejecutar el comando que copia a `/etc/cas` la configuración:
 
 ```bash
 $./build copy
