@@ -29,6 +29,12 @@ Mis dieses para Baeldung ;)
 $sudo keytool -import -alias thekeystore -storepass changeit -file thekeystore.crt -keystore /etc/ssl/certs/java/cacerts
 ```
 
+NOTA: Si hay problemas con el alias 'thekeystore', eliminar el alias de la siguiente forma:
+
+```bash
+$sudo keytool -delete -alias thekeystore -keystore /etc/ssl/certs/java/cacerts -storepass changeit
+```
+
 2 - Config application server with defaults pors 8080 y 8443 and ensure the keystore is loaded up with keys and certificates of the server
 
 e.g. TOMCAT 8.5 server.xml in Tomcat 8.X:
