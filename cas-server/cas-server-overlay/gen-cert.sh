@@ -4,26 +4,36 @@
 # Fichero: gen-cert.sh
 # Fecha: 03/05/18
 #
-
-path_cacerts="/opt/java/jdk1.8.0_40_x86_64/jre/lib/security/cacerts"
+# https://www.adictosaltrabajo.com/tutoriales/security-ssl-keytool/
+# https://www.adictosaltrabajo.com/tutoriales/autenticacion-ssl-con-certificado-de-cliente/
+#
 path_cacerts_osx="/etc/ssl/certs/java/cacerts"
+path_cacerts="${JAVA_HOME}/jre/lib/security/cacerts"
+current_path_certs=${path_cacerts}
+keystore_path="etc/cas/caskeystore"
+cas_cert_path="etc/cas/cas.crt"
+deploy_path="/etc/cas/"
+cas_cert_alias="casCert"
+store_pass="changeit"
 
-current_patch_certs=${path_cacerts}
+echo "Deleting previous alias in cacerts ..."
+sudo rm -fv ${keystore_path}
+sudo rm -f ${cas_cert_path}
+sudo keytool -delete -alias ${cas_cert_alias} -keystore ${current_path_certs} -storepass ${store_pass}
 
-echo "Deleting previous alias and current keystore .."
-sudo rm -fv etc/cas/thekeystore
-sudo rm -fv etc/cas/thekeystore.crt
-sudo keytool -delete -alias thekeystore -keystore ${current_patch_certs} -storepass changeit
 
-#DNAME="${DNAME:-CN=localhost,OU=localhost,O=localhost,L,=Madrid,ST=Madrid,C=ES}"
+# Generamos el certificado autofirmado, el almacen de claves y guardasmo el certificado autofirmado en dicho almacen
 DNAME="${DNAME:-CN=localhost,OU=localhost,O=localhost,C=ES}"
-echo "Generating keystore for CAS with DN ${DNAME}"
-keytool -genkey -keyalg RSA -alias thekeystore -keystore etc/cas/thekeystore -storepass changeit -validity 360 -keysize 2048 -dname ${DNAME}
-keytool -export -alias thekeystore -file etc/cas/thekeystore.crt -keystore etc/cas/thekeystore
-sudo keytool -import -alias thekeystore -storepass changeit -file etc/cas/thekeystore.crt  -keystore ${current_patch_certs}
+echo "Generating keystore ${keystore_path} for CAS with DNAME '${DNAME}'"
+keytool -genkey -keyalg RSA -alias ${cas_cert_alias} -keystore ${keystore_path} -storepass ${store_pass} -validity 360 -keysize 2048 -dname ${DNAME}
 
-echo "Deploy keys in /etc/cas.."
+# Exportamos el certificado autofirmado anteriormente generado para importarlo en el 'truststore' o 'cacerts'
+keytool -export -alias ${cas_cert_alias} -file ${cas_cert_path} -keystore ${keystore_path}
+sudo keytool -import -alias ${cas_cert_alias} -storepass ${store_pass} -file ${cas_cert_path} -keystore ${current_path_certs}
+
+echo "Deploy keys in ${deploy_path} --"
 ./build.sh copy
+
 
 
   
