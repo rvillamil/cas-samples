@@ -26,13 +26,13 @@ Mis dieses para Baeldung ;)
 1 - Para las pruebas en LOCAL, se require que tengas instalado el certificado en el almacen de claves de tu equipo, porque si no, la aplicacion cliente va a dar problemas con el protocolo SSL
 
 ```bash
-$sudo keytool -import -alias thekeystore -storepass changeit -file thekeystore.crt -keystore /etc/ssl/certs/java/cacerts
+$sudo keytool -import -alias casCert -storepass changeit -file etc/cas/cas.crt -keystore ${JAVA_HOME}/jre/lib/security/cacerts
 ```
 
-NOTA: Si hay problemas con el alias 'thekeystore', eliminar el alias de la siguiente forma:
+Nota: Si hay problemas con el alias 'casCert', eliminar el alias de la siguiente forma:
 
 ```bash
-$sudo keytool -delete -alias thekeystore -keystore /etc/ssl/certs/java/cacerts -storepass changeit
+$sudo keytool -delete -alias casCert -keystore ${JAVA_HOME}/jre/lib/security/cacerts -storepass changeit
 ```
 
 2 - Config application server with defaults pors 8080 y 8443 and ensure the keystore is loaded up with keys and certificates of the server
@@ -43,7 +43,7 @@ e.g. TOMCAT 8.5 server.xml in Tomcat 8.X:
 <Connector SSLEnabled="true" maxThreads="150" port="8443"
        protocol="org.apache.coyote.http11.Http11NioProtocol">
         <SSLHostConfig>
-            <Certificate certificateKeystoreFile="/etc/cas/thekeystore"
+            <Certificate certificateKeystoreFile="/etc/cas/caskeystore"
                    keystorePass="changeit" type="RSA"/>
         </SSLHostConfig>
     </Connector>

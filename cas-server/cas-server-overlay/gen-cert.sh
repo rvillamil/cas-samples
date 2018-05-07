@@ -1,4 +1,4 @@
-#!/bin/bash 
+#!/bin/bash
 #
 # Copyright (C) Rodrigo Villamil Perez 2018
 # Fichero: gen-cert.sh
@@ -7,7 +7,6 @@
 # https://www.adictosaltrabajo.com/tutoriales/security-ssl-keytool/
 # https://www.adictosaltrabajo.com/tutoriales/autenticacion-ssl-con-certificado-de-cliente/
 #
-path_cacerts_osx="/etc/ssl/certs/java/cacerts"
 path_cacerts="${JAVA_HOME}/jre/lib/security/cacerts"
 current_path_certs=${path_cacerts}
 keystore_path="etc/cas/caskeystore"
@@ -36,4 +35,4 @@ echo "Deploy keys in ${deploy_path} --"
 
 
 
-  
+
