@@ -159,7 +159,15 @@
 					<artifactId>cas-server-support-saml-idp</artifactId>
 					<version>${cas.version}</version>
 				</dependency>
-
+				
+				<!-- CAS Spring Boot Administration: CAS Server as Client
+				require:  https://github.com/apereo/cas-bootadmin-overlay running 
+				-->
+                <dependency>
+                    <groupId>org.apereo.cas</groupId>
+                    <artifactId>cas-server-support-bootadmin-client</artifactId>
+                    <version>${cas.version}</version>
+                </dependency>
 
 			</dependencies>
 		</profile>
