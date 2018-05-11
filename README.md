@@ -63,6 +63,13 @@ $./build copy
 ```bash
 $./build package
 $./build copy
+
+
+6 - En el directorio `cas-server/cas-services-bootadminserver-overlay/`, ejecutar los comandos
+
+```bash
+$./build package
+$./build run
 ```
 
 5 - On a successful deployment via the following methods:
@@ -73,9 +80,13 @@ $./build copy
   - `https://localhost:8443/cas`
 
 - CAS Management will be available at:
+
   - `http://localhost:8080/cas-management`
   - `https://localhost:8443/cas-management`
 
+- Spring Boot applications admin, will be available at:
+  
+  - `https://localhost:8444/`
 
 6 - Default user and password:
 
@@ -87,3 +98,18 @@ Importante, Cada vez que cambiemos algún fichero de condiguración de cas o cas
 ```bash
 $./build copy
 ```
+# Aplicaciones cliente
+
+## cas-secured-app-one
+
+Cliente que usa el protocolo CAS: Aplicacion Spring Boot, que se ejecuta como una aplicacion springboot standalone
+
+- `http://localhost:9001`
+
+## saml-secured-app-one
+
+Service Provider que usa el protocolo SAML: Aplicacion Spring Boot, que se ejecuta como una aplicacion springboot standalone
+
+
+- `http://localhost:9002`
+
