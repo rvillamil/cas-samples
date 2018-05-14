@@ -40,6 +40,13 @@ RUN mkdir -p /var/cache/httpd/mod_auth_cas \
     && chown apache.apache /var/cache/httpd/mod_auth_cas \
     && chmod 700 /var/cache/httpd/mod_auth_cas
 
+#
+# Copiamos la configuracion de apache
+#
+ADD etc/httpd/conf/httpd.conf /etc/httpd/conf/
+ADD etc/httpd/conf.d /etc/httpd/conf.d/
+
+
 # CentOS uses systemd (instead of init) to manage system resources. Run the command
 RUN systemctl enable httpd.service
 
