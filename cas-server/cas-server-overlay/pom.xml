@@ -133,41 +133,48 @@
 				</dependency>
 
 
-				<!-- JDBC Support : BBDD users
-				<dependency>
-					<groupId>org.apereo.cas</groupId>
-					<artifactId>cas-server-support-jdbc</artifactId>
-					<version>${cas.version}</version>
-				</dependency>
-				<dependency>
-					<groupId>org.apereo.cas</groupId>
-					<artifactId>cas-server-support-jdbc-drivers</artifactId>
-					<version>${cas.version}</version>
-				</dependency>
-				 -->
+				<!-- JDBC Support : BBDD users <dependency> <groupId>org.apereo.cas</groupId> 
+					<artifactId>cas-server-support-jdbc</artifactId> <version>${cas.version}</version> 
+					</dependency> <dependency> <groupId>org.apereo.cas</groupId> <artifactId>cas-server-support-jdbc-drivers</artifactId> 
+					<version>${cas.version}</version> </dependency> -->
 
-				<!-- Delegate autenticaction in SAML2 providers, OAuth providers.. -->
+				
+				<!-- SAML1.1 / SAML2 Identity Provider 
+				
+				 There are two different SAML dependencies: 
+				 cas-server-support-saml enables support for returning 
+				 user attributes to client applications;
+                 cas-server-support-saml-idp enables support for using the CAS 
+                 server as a SAML2 Identity Provider. 
+                 Both dependencies should be included in pom.xml.-->
+				
 				<dependency>
 					<groupId>org.apereo.cas</groupId>
-					<artifactId>cas-server-support-pac4j-webflow</artifactId>
+					<artifactId>cas-server-support-saml</artifactId>
 					<version>${cas.version}</version>
 				</dependency>
-
-                <!-- SAML2 Identity Provider -->
+				
 				<dependency>
 					<groupId>org.apereo.cas</groupId>
 					<artifactId>cas-server-support-saml-idp</artifactId>
 					<version>${cas.version}</version>
 				</dependency>
 				
-				<!-- CAS Spring Boot Administration: CAS Server as Client
-				require:  https://github.com/apereo/cas-bootadmin-overlay running 
-				-->
+				<!-- Delegate autenticaction in SAML2 providers, OAuth providers.. -->
                 <dependency>
                     <groupId>org.apereo.cas</groupId>
-                    <artifactId>cas-server-support-bootadmin-client</artifactId>
+                    <artifactId>cas-server-support-pac4j-webflow</artifactId>
                     <version>${cas.version}</version>
                 </dependency>
+				
+
+				<!-- CAS Spring Boot Administration: CAS Server as Client require: https://github.com/apereo/cas-bootadmin-overlay 
+					running -->
+				<dependency>
+					<groupId>org.apereo.cas</groupId>
+					<artifactId>cas-server-support-bootadmin-client</artifactId>
+					<version>${cas.version}</version>
+				</dependency>
 
 			</dependencies>
 		</profile>

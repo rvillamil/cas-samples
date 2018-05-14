@@ -17,9 +17,10 @@ En este momento, tenemos implementado lo siguiente:
 
 [Aplicacion cliente CAS](cas-clients-examples/README.md) en `cas-clients-examples/cas-secured-app-one`, implementada utilizando el soporte de springboot. Emplea el protocolo CAS para conectarse con el servidor CAS.
 
-Me he apoyado en la documentacion y el código de [Baeldung](http://www.baeldung.com/spring-security-cas-sso)
+Me he apoyado en la siguiente documentacion :
+* [Baeldung](http://www.baeldung.com/spring-security-cas-sso)
+* [The new School] (https://dacurry-tns.github.io/deploying-apereo-cas/building_server_configure-server-properties.html)
 
-Mis dieses para Baeldung ;)
 
 ## Instalacion 
 

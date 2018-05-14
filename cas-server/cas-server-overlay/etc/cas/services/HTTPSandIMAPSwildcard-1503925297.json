@@ -1,0 +1,8 @@
+{  
+  "@class" :            "org.apereo.cas.services.RegexRegisteredService",
+  "serviceId" :         "^(https|imaps)://.*",
+  "name" :              "HTTPS and IMAPS wildcard",
+  "id" :                1503925297,
+  "description" :       "Wildcard service definition that applies to any https or imaps url.Do not use this definition in a production environment",
+  "evaluationOrder" :   99999
+}
