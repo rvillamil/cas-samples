@@ -11,7 +11,7 @@
 # Images and containers name
 APACHE_CAS_IMAGE="img-apache-cas-client:latest"
 APACHE_CAS_CONTAINER="cnt-apache-cas-client"
-APACHE_PORT=8090
+APACHE_PORT=80
 
 # ---------------------------- Docker utilities --------------------------------
 message()
