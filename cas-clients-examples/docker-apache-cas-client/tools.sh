@@ -60,7 +60,7 @@ do
  ======================================
 
 	(0) Build '${APACHE_CAS_IMAGE}'
-	(1) Run '${APACHE_CAS_CONTAINER}' container
+	(1) Run '${APACHE_CAS_CONTAINER}' container on port '${APACHE_PORT}'
 	(2) Stop '${APACHE_CAS_CONTAINER}' container
 	(3) Remove '${APACHE_CAS_CONTAINER}' container
 	(4) Open terminal in '${APACHE_CAS_CONTAINER}' container

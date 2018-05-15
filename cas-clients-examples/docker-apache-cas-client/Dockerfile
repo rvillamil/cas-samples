@@ -22,15 +22,16 @@ RUN yum -y install httpd \
 # mod-auth-cas instalation
 #
 ENV MOD_AUTH_CAS_INSTALL_DIR /tmp/mod_auth_cas/
-ENV MOD_AUTH_CAS_VERSION mod_auth_cas-1.1
+ENV MOD_AUTH_CAS_VERSION mod_auth_cas-master_28_11_2017
 RUN mkdir -p "$MOD_AUTH_CAS_INSTALL_DIR"
-COPY resources/"$MOD_AUTH_CAS_VERSION".tar.gz "$MOD_AUTH_CAS_INSTALL_DIR"
+COPY resources/cas/"$MOD_AUTH_CAS_VERSION".tar.gz "$MOD_AUTH_CAS_INSTALL_DIR"
 RUN cd "$MOD_AUTH_CAS_INSTALL_DIR" \
     && tar xvf "$MOD_AUTH_CAS_VERSION".tar.gz \
-    && cd "$MOD_AUTH_CAS_VERSION" \
+    && cd mod_auth_cas-master \
     && autoreconf -ivf \
     && ./configure \
     && make \
+    && make install \
     && cp src/.libs/mod_auth_cas.so /etc/httpd/modules/mod_auth_cas.so
     
 #
@@ -46,6 +47,13 @@ RUN mkdir -p /var/cache/httpd/mod_auth_cas \
 ADD etc/httpd/conf/httpd.conf /etc/httpd/conf/
 ADD etc/httpd/conf.d /etc/httpd/conf.d/
 
+
+#
+# HTTPS Support
+#
+COPY resources/ssl/ca.crt /etc/pki/tls/certs
+COPY resources/ssl/ca.key /etc/pki/tls/private/ca.key
+COPY resources/ssl/ca.csr /etc/pki/tls/private/ca.csr
 
 # CentOS uses systemd (instead of init) to manage system resources. Run the command
 RUN systemctl enable httpd.service
