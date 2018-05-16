@@ -29,9 +29,6 @@ ADD etc/httpd/conf.d /etc/httpd/conf.d/
 #
 # HTTPS Support
 #
-#COPY resources/ssl/ca.crt /etc/pki/tls/certs
-#COPY resources/ssl/ca.key /etc/pki/tls/private/ca.key
-#COPY resources/ssl/ca.csr /etc/pki/tls/private/ca.csr
 COPY resources/ssl/server.crt   /etc/pki/tls/certs/server.crt
 COPY resources/ssl/server.key   /etc/pki/tls/private/server.key
 
