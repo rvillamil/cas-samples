@@ -11,7 +11,7 @@
 # Images and containers name
 APACHE_CAS_IMAGE="img-apache-cas-client:latest"
 APACHE_CAS_CONTAINER="cnt-apache-cas-client"
-APACHE_PORT=80
+APACHE_PORT=443
 
 # ---------------------------- Docker utilities --------------------------------
 message()
@@ -27,7 +27,7 @@ build()
 run()
 {
     message "Run APACHE container '${APACHE_CAS_CONTAINER}'on port ${APACHE_PORT}. HTML content from 'html' dir"    
-	docker run -dit --name ${APACHE_CAS_CONTAINER} -p ${APACHE_PORT}:80 -v "${PWD}"/html:/var/www/html ${APACHE_CAS_IMAGE}
+	docker run -it --name ${APACHE_CAS_CONTAINER} -p ${APACHE_PORT}:443 -v "${PWD}"/html:/var/www/html ${APACHE_CAS_IMAGE}
 }
 
 stop()
