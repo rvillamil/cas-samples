@@ -12,7 +12,7 @@ RUN  echo 'APT::Get::Assume-Yes "true";' >> /etc/apt/apt.conf && echo 'APT::Get:
 # ------------------------------------------------------------------------------   
 #                           PHP and Others support
 # ------------------------------------------------------------------------------
-RUN requirements="nano cron mysql-client-5.5 libpng12-dev libmcrypt-dev libmcrypt4 libcurl3-dev libxml2-dev libfreetype6 libjpeg62-turbo libpng12-dev libfreetype6-dev libjpeg62-turbo-dev" \
+RUN requirements="vim nano cron mysql-client-5.5 libpng12-dev libmcrypt-dev libmcrypt4 libcurl3-dev libxml2-dev libfreetype6 libjpeg62-turbo libpng12-dev libfreetype6-dev libjpeg62-turbo-dev" \
     && apt-get update && apt-get install -y --no-install-recommends $requirements && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-install pdo pdo_mysql \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
@@ -63,6 +63,7 @@ COPY etc/auth_cas.load /etc/apache2/mods-available/
 COPY etc/default-ssl.conf /etc/apache2/sites-available/
 RUN a2enmod auth_cas
 RUN a2ensite default-ssl
+RUN echo '# Set server name' >> /etc/apache2/apache2.conf && echo 'ServerName localhost' >> /etc/apache2/apache2.conf
 
 
 EXPOSE 80

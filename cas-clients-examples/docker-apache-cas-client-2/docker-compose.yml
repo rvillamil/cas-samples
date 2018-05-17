@@ -1,4 +1,4 @@
-web:
+my_casified_site:
   build: .
   ports:
     - "80:80"
