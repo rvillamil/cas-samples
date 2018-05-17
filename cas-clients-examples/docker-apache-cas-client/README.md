@@ -28,6 +28,10 @@ sudo docker-compose up
 sudo docker-compose down
 ```
 
+###### Run bas terminal
+
+docker exec -i -t dockerapachecasclient_my_casified_site_1 /bin/bash
+
 After you run the command above you should be able to access http://localhost
 and https://localhost
 
