@@ -48,13 +48,10 @@ RUN cd "$MOD_AUTH_CAS_INSTALL_DIR" \
 # && make install \
     && cp src/.libs/mod_auth_cas.so /etc/httpd/modules/mod_auth_cas.so
     
-#
 # Create de cookie cache for mod-auth-cas
-#
 RUN mkdir -p /var/cache/httpd/mod_auth_cas \
     && chown apache.apache /var/cache/httpd/mod_auth_cas \
     && chmod 700 /var/cache/httpd/mod_auth_cas
-
 
 
 
