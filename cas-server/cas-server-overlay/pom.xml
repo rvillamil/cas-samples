@@ -146,8 +146,7 @@
 				 user attributes to client applications;
                  cas-server-support-saml-idp enables support for using the CAS 
                  server as a SAML2 Identity Provider. 
-                 Both dependencies should be included in pom.xml.-->
-				
+                 Both dependencies should be included in pom.xml.-->				
 				<dependency>
 					<groupId>org.apereo.cas</groupId>
 					<artifactId>cas-server-support-saml</artifactId>
@@ -167,14 +166,6 @@
                     <version>${cas.version}</version>
                 </dependency>
 				
-
-				<!-- CAS Spring Boot Administration: CAS Server as Client require: https://github.com/apereo/cas-bootadmin-overlay 
-					running -->
-				<dependency>
-					<groupId>org.apereo.cas</groupId>
-					<artifactId>cas-server-support-bootadmin-client</artifactId>
-					<version>${cas.version}</version>
-				</dependency>
 
 			</dependencies>
 		</profile>
