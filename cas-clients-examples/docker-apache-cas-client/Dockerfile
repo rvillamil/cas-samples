@@ -64,7 +64,7 @@ COPY etc/default-ssl.conf /etc/apache2/sites-available/
 RUN a2enmod auth_cas
 RUN a2ensite default-ssl
 RUN echo '# Set server name' >> /etc/apache2/apache2.conf && \
-    echo 'ServerName cnt-docker-apache-cas-client' >> /etc/apache2/apache2.conf
+    echo 'ServerName localhost' >> /etc/apache2/apache2.conf
 
 
 EXPOSE 80
