@@ -13,15 +13,15 @@ services:
       - ./cas-server/cas-server-overlay/etc/cas:/etc/cas
       
   
-  docker-apache-cas-client:
-    build: cas-clients-examples/docker-apache-cas-client
-    image: docker-apache-cas-client:latest
-    container_name: cnt-docker-apache-cas-client
+  cas-client-apache2:
+    build: cas-clients-examples/cas-client-apache2
+    image: cas-client-apache2:latest
+    container_name: cnt-cas-client-apache2
     ports:
       - 443:443
       - 80:80
     volumes:
-      - ./cas-clients-examples/docker-apache-cas-client/src:/var/www/html/
+      - ./cas-clients-examples/cas-client-apache2/src:/var/www/html/
       
       
  

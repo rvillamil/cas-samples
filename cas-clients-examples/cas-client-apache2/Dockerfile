@@ -1,6 +1,7 @@
 FROM php:5.6-apache
 
-LABEL maintainer Rodrigo Villamil Perez <rodrigo.villamil@gmail.com>
+# En caso de problemas...
+LABEL maintainer "Rodrigo Villamil Perez <rodrigo.villamil@gmail.com>" description="CAS Client. Apache2.4 with mod_auth_cas "
 
 # ------------------------------------------------------------------------------
 #                          Proxy Support
