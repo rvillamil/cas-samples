@@ -23,5 +23,17 @@ services:
     volumes:
       - ./cas-clients-examples/cas-client-apache2/src:/var/www/html/
       
+  cas-secured-app-one:
+    build: cas-clients-examples/cas-secured-app-one
+    image: cas-secured-app-one:latest
+    container_name: cnt-cas-secured-app-one
+    ports:
+      - 9001:9001
       
- 
+  saml-secured-app-one:
+    build: cas-clients-examples/saml-secured-app-one
+    image: saml-secured-app-one:latest
+    container_name: cnt-saml-secured-app-one
+    ports:
+      - 9002:9002
+  

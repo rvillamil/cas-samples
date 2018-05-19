@@ -1,4 +1,4 @@
-# CAS Server: Standalone Configuration
+# CAS Server, CAS Services Management and Clients Samples
 
 Con este proyecto, pretendo explorar las posibilidades de CAS, entender el producto y sus posibilidades.
 
