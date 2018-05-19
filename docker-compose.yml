@@ -1,0 +1,27 @@
+version: '2.0'
+     
+services:
+   
+  cas-server-overlay:
+    build: cas-server/cas-server-overlay
+    image: cas-server-overlay:latest
+    container_name: cnt-cas-server-overlay 
+    ports:
+      - 8443:8443
+      - 8080:8080
+    volumes:
+      - ./cas-server/cas-server-overlay/etc/cas:/etc/cas
+      
+  
+  docker-apache-cas-client:
+    build: cas-clients-examples/docker-apache-cas-client
+    image: docker-apache-cas-client:latest
+    container_name: cnt-docker-apache-cas-client
+    ports:
+      - 443:443
+      - 80:80
+    volumes:
+      - ./cas-clients-examples/docker-apache-cas-client/src:/var/www/html/
+      
+      
+ 
