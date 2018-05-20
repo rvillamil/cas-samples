@@ -37,3 +37,11 @@ services:
     ports:
       - 9002:9002
   
+  saml-client-shibboleth-sp:
+    build: cas-clients-examples/saml-client-shibboleth-sp
+    image: saml-client-shibboleth-sp:latest
+    container_name: cnt-saml-client-shibboleth-sp
+    ports:
+      - 443:443
+      - 80:80
+  
