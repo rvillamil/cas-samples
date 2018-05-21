@@ -1,7 +1,7 @@
 {
   "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
   "serviceId" : "https://localhost/shibboleth",
-  "name" : "Apache Secured By SAML",
+  "name" : "SamlClientShibbolethSP: Apache Secured By SAML",
   "id" : 1509030300,
   "description" : "CAS development Apache mod_shib/shibd server with username/password protection",
   "metadataLocation" : "https://localhost/Shibboleth.sso/Metadata",
