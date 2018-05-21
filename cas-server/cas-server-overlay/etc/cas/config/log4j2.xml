@@ -18,8 +18,8 @@
 			<PatternLayout pattern="%d %p [%c] - &lt;%m&gt;%n" />
 			<Policies>
 				<OnStartupTriggeringPolicy />
-				<SizeBasedTriggeringPolicy size="10 MB" />
-				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy />
+				<TimeBasedTriggeringPolicy interval="1" modulate="true" />
 			</Policies>
 		</RollingFile>
 		<RollingFile name="auditlogfile" fileName="${sys:cas.log.dir}/cas_audit.log"
@@ -27,8 +27,8 @@
 			<PatternLayout pattern="%d %p [%c] - %m%n" />
 			<Policies>
 				<OnStartupTriggeringPolicy />
-				<SizeBasedTriggeringPolicy size="10 MB" />
-				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy />
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
 			</Policies>
 		</RollingFile>
 
@@ -37,8 +37,8 @@
 			<PatternLayout pattern="%m%n" />
 			<Policies>
 				<OnStartupTriggeringPolicy />
-				<SizeBasedTriggeringPolicy size="10 MB" />
-				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy />
+				<TimeBasedTriggeringPolicy interval="1" modulate="true"/>
 			</Policies>
 		</RollingFile>
 
