@@ -4,5 +4,5 @@
   "name" : "CAS Services Management",
   "id" : 1510002272,
   "description" : "CAS services management webapp",
-  "evaluationOrder" : 5500
+  "evaluationOrder" : 40
 }
