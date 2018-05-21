@@ -6,9 +6,9 @@ LABEL maintainer "Rodrigo Villamil Perez <rodrigo.villamil@gmail.com>" descripti
 # ------------------------------------------------------------------------------
 #                          Proxy Support
 # ------------------------------------------------------------------------------
-#RUN  echo 'Acquire::http { Proxy "http://89.167.129.32:80/"; };' >> /etc/apt/apt.conf.d/01proxy
-#RUN  echo 'Acquire::https { Proxy "http://89.167.129.32:80/"; };' >> /etc/apt/apt.conf.d/01proxy
-#RUN  echo 'APT::Get::Assume-Yes "true";' >> /etc/apt/apt.conf && echo 'APT::Get::force-yes "true";' >> /etc/apt/apt.conf
+RUN  echo 'Acquire::http { Proxy "http://89.167.129.32:80/"; };' >> /etc/apt/apt.conf.d/01proxy
+RUN  echo 'Acquire::https { Proxy "http://89.167.129.32:80/"; };' >> /etc/apt/apt.conf.d/01proxy
+RUN  echo 'APT::Get::Assume-Yes "true";' >> /etc/apt/apt.conf && echo 'APT::Get::force-yes "true";' >> /etc/apt/apt.conf
 
 # ------------------------------------------------------------------------------
 #                           PHP and Others support
