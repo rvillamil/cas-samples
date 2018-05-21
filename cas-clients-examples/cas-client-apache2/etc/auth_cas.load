@@ -3,22 +3,22 @@ LoadModule auth_cas_module /usr/lib/apache2/modules/mod_auth_cas.so
 <Directory "/var/www/html/secured-by-cas">
     <IfModule mod_auth_cas.c>
         AuthType CAS
-    </IfModule>
+     </IfModule>
 
     Require valid-user
 </Directory>
 
 <IfModule mod_auth_cas.c>
     CASVersion            2
-    CASLoginUrl           https://172.17.0.1:8443/cas/login
-    CASValidateUrl        https://172.17.0.1:8443/cas/serviceValidate
+    CASLoginUrl           https://localhost:8443/cas/login
+    CASValidateUrl        https://localhost:8443/cas/serviceValidate
     CASCookiePath         /var/cache/apache2/mod_auth_cas/
     CASSSOEnabled         On
-    CASDebug              On    
+    CASDebug              On
     CASCertificatePath    /etc/ssl/certs/
     CASTimeout            7200
     CASIdleTimeout        3600
-    CASCacheCleanInterval 1800    
+    CASCacheCleanInterval 1800
 </IfModule>
 
 

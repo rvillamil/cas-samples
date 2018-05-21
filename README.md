@@ -1,4 +1,4 @@
-# CAS Server: Standalone Configuration
+# CAS Server, CAS Services Management and Clients Samples
 
 Con este proyecto, pretendo explorar las posibilidades de CAS, entender el producto y sus posibilidades.
 
@@ -9,7 +9,7 @@ En este momento, tenemos implementado lo siguiente:
 - Configuración del servidor con el perfil 'Standalone'. Toda la configuracion externalizada, se encuentra en el directorio /etc/cas
 - Registro de aplicaciones clientes CAS basadas en Json. JSON Service Registry
 - Protocolo CAS (Por defecto)
- 
+
 [Administrador de servicios del sercidor de CAS](cas-server/cas-services-management-overlay/README.md) en el directorio `cas-server/cas-services-management-overlay` con las siguentes funcionalidades:
 
 - Configuración del servidor con el perfil 'Standalone'. Toda la configuracion externalizada, se encuentra en el directorio `/etc/cas`
@@ -22,7 +22,7 @@ Me he apoyado en la siguiente documentacion :
 * [The new School] (https://dacurry-tns.github.io/deploying-apereo-cas/building_server_configure-server-properties.html)
 
 
-## Instalacion 
+## Instalacion
 
 1 - Para las pruebas en LOCAL, se require que tengas instalado el certificado en el almacen de claves de tu equipo, porque si no, la aplicacion cliente va a dar problemas con el protocolo SSL
 
@@ -86,7 +86,7 @@ $./build run
   - `https://localhost:8443/cas-management`
 
 - Spring Boot applications admin, will be available at:
-  
+
   - `https://localhost:8444/`
 
 6 - Default user and password:
@@ -113,4 +113,36 @@ Service Provider que usa el protocolo SAML: Aplicacion Spring Boot, que se ejecu
 
 
 - `http://localhost:9002`
+
+# Soporte para docker
+
+En el directorio raiz tenemos un docker-compose con todo lo necesario. Se equiere que antes se hayan compilado los servicios detallados en el docker compose,
+para generar las imagenes. Una vez compilados los proyectos, ejecutamos:
+
+## Construir todos los contenedores
+
+```bash
+$ docker-compose build
+```
+
+## Arrancar todos los contenedores
+
+```bash
+$ docker-compose up
+```
+
+
+## Arrancar un contenedor especifico: Ejemplo cas-server-overlay
+
+```bash
+$ docker-compose up cas-server-overlay
+```
+
+
+## Ejecutar una shell en el contenedor
+
+```bash
+$ docker exec -it cnt-cas-server-overlay /bin/sh
+```
+
 
