@@ -1,6 +1,6 @@
 LoadModule auth_cas_module /usr/lib/apache2/modules/mod_auth_cas.so
 
-<Directory "/var/www/html/secured-by-cas">
+<Directory "/var/www/html/casclient/secured-by-cas">
     <IfModule mod_auth_cas.c>
         AuthType CAS
      </IfModule>

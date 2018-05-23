@@ -1,6 +1,6 @@
 {
   "@class" : "org.apereo.cas.services.RegexRegisteredService",
-  "serviceId" : "^https://localhost/secured-by-cas/(\\z|/.*)",
+  "serviceId" : "^https://localhost/casclient(\\z|/.*)",
   "name" : "CAS Client ModAuth-CAS",
   "id" : 1410002272,
   "description" : "CAS Client ModAuth-CAS support",
