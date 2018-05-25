@@ -2,6 +2,14 @@ version: '2.0'
      
 services:
    
+  cas-load-balancer:
+    build: cas-server/cas-load-balancer
+    image: cas-load-balancer:latest
+    container_name: cnt-cas-load-balancer 
+    ports:
+      - 443:443
+      - 80:80
+    
   cas-server-overlay:
     build: cas-server/cas-server-overlay
     image: cas-server-overlay:latest
