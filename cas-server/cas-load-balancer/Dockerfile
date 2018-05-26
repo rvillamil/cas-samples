@@ -21,7 +21,7 @@ RUN requirements="vim" \
 # ------------------------------------------------------------------------------
 #                           SSL Certs
 # ------------------------------------------------------------------------------
-RUN openssl req -x509 -newkey rsa:4086 \
+Z    openssl req -x509 -newkey rsa:4086 \
     -keyout /etc/apache2/external/cert.pem \
     -out /etc/apache2/external/cert.pem \
     -days 3650 -nodes -sha256 \

@@ -2,10 +2,10 @@ version: '2.0'
      
 services:
    
-  cas-load-balancer:
-    build: cas-server/cas-load-balancer
-    image: cas-load-balancer:latest
-    container_name: cnt-cas-load-balancer 
+  cas-reverse-proxy:
+    build: cas-server/cas-reverse-proxy
+    image: cas-reverse-proxy:latest
+    container_name: cnt-cas-reverse-proxy 
     ports:
       - 443:443
       - 80:80
