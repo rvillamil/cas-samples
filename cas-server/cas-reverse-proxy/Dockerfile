@@ -26,7 +26,11 @@ RUN mkdir -p /etc/apache2/external && \
       -days 3650 -nodes -sha256 \
       -subj "/C=ES/ST=Madrid/L=Madrid/O=Security/OU=Development/CN=casdev.company.com"
 
-
+#
+# Redirect Log to console
+#
+RUN ln -sf /proc/self/fd/1 /var/log/apache2/access.log && \
+    ln -sf /proc/self/fd/1 /var/log/apache2/error.log
 # ------------------------------------------------------------------------------
 #                           My Config
 # ------------------------------------------------------------------------------
