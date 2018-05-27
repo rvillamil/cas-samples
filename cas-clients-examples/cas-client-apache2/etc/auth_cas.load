@@ -10,8 +10,8 @@ LoadModule auth_cas_module /usr/lib/apache2/modules/mod_auth_cas.so
 
 <IfModule mod_auth_cas.c>
     CASVersion            2
-    CASLoginUrl           https://localhost:8443/cas/login
-    CASValidateUrl        https://localhost:8443/cas/serviceValidate
+    CASLoginUrl           https://casdev.company.com:8443/cas/login
+    CASValidateUrl        https://casdev.company.com:8443/cas/serviceValidate
     CASCookiePath         /var/cache/apache2/mod_auth_cas/
     CASSSOEnabled         On
     CASDebug              On

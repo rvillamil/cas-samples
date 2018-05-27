@@ -9,9 +9,9 @@
 #
 path_cacerts="${JAVA_HOME}/jre/lib/security/cacerts"
 current_path_certs=${path_cacerts}
-keystore_path="etc/cas/caskeystore"
-cas_cert_path="etc/cas/cas.crt"
-deploy_path="/etc/cas/"
+keystore_path="../etc/cas/caskeystore"
+cas_cert_path="../etc/cas/cas.crt"
+deploy_path="../etc/cas/"
 cas_cert_alias="casCert"
 store_pass="changeit"
 
@@ -22,16 +22,13 @@ sudo keytool -delete -alias ${cas_cert_alias} -keystore ${current_path_certs} -s
 
 
 # Generamos el certificado autofirmado, el almacen de claves y guardasmo el certificado autofirmado en dicho almacen
-DNAME="${DNAME:-CN=localhost,OU=localhost,O=localhost,C=ES}"
+DNAME="${DNAME:-CN=casdev.company.com,OU=casdev.company.com,O=casdev.company.com,C=ES}"
 echo "Generating keystore ${keystore_path} for CAS with DNAME '${DNAME}'"
 keytool -genkey -keyalg RSA -alias ${cas_cert_alias} -keystore ${keystore_path} -storepass ${store_pass} -validity 360 -keysize 2048 -dname ${DNAME}
 
 # Exportamos el certificado autofirmado anteriormente generado para importarlo en el 'truststore' o 'cacerts'
 keytool -export -alias ${cas_cert_alias} -file ${cas_cert_path} -keystore ${keystore_path}
 sudo keytool -import -alias ${cas_cert_alias} -storepass ${store_pass} -file ${cas_cert_path} -keystore ${current_path_certs}
-
-echo "Deploy keys in ${deploy_path} --"
-./build.sh copy
 
 
 

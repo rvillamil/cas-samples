@@ -6,9 +6,9 @@ LABEL maintainer "Rodrigo Villamil Perez <rodrigo.villamil@gmail.com>" descripti
 # ------------------------------------------------------------------------------
 #                          Proxy Support
 # ------------------------------------------------------------------------------
-RUN  echo 'Acquire::http { Proxy "http://89.167.129.32:80/"; };' >> /etc/apt/apt.conf.d/01proxy
-RUN  echo 'Acquire::https { Proxy "http://89.167.129.32:80/"; };' >> /etc/apt/apt.conf.d/01proxy
-RUN  echo 'APT::Get::Assume-Yes "true";' >> /etc/apt/apt.conf && echo 'APT::Get::force-yes "true";' >> /etc/apt/apt.conf
+#RUN  echo 'Acquire::http { Proxy "http://89.167.129.32:80/"; };' >> /etc/apt/apt.conf.d/01proxy
+#RUN  echo 'Acquire::https { Proxy "http://89.167.129.32:80/"; };' >> /etc/apt/apt.conf.d/01proxy
+#RUN  echo 'APT::Get::Assume-Yes "true";' >> /etc/apt/apt.conf && echo 'APT::Get::force-yes "true";' >> /etc/apt/apt.conf
 
 # ------------------------------------------------------------------------------
 #                           PHP and Others support
@@ -52,20 +52,22 @@ RUN mkdir /var/cache/apache2/mod_auth_cas && \
 # ------------------------------------------------------------------------------
 #                           SSL support
 # ------------------------------------------------------------------------------
-RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/ssl-cert-snakeoil.key -out /etc/ssl/certs/ssl-cert-snakeoil.pem -subj "/C=ES/ST=Madrid/L=Madrid/O=Security/OU=Development/CN=localhost"
+RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/ssl-cert-snakeoil.key -out /etc/ssl/certs/ssl-cert-snakeoil.pem -subj "/C=ES/ST=Madrid/L=Madrid/O=Security/OU=Development/CN=casclient1.company.com"
 RUN a2enmod rewrite
 RUN a2enmod ssl
 
 # ------------------------------------------------------------------------------
 #                           My config
 # ------------------------------------------------------------------------------
+ADD src/casclient/ /var/www/html
+
 COPY etc/php.ini /usr/local/etc/php/
 COPY etc/auth_cas.load /etc/apache2/mods-available/
 COPY etc/default-ssl.conf /etc/apache2/sites-available/
 RUN a2enmod auth_cas
 RUN a2ensite default-ssl
 RUN echo '# Set server name' >> /etc/apache2/apache2.conf && \
-    echo 'ServerName localhost' >> /etc/apache2/apache2.conf
+    echo 'ServerName casclient1.company.com' >> /etc/apache2/apache2.conf
 
 
 EXPOSE 80

@@ -1,0 +1,36 @@
+version: '2.0'
+     
+services:
+   
+  cas-client-apache2:
+    build: cas-client-apache2
+    image: cas-client-apache2:latest
+    container_name: cnt-cas-client-apache2
+    ports:
+      - 443:443
+      - 80:80
+    volumes:
+      - ./cas-client-apache2/src:/var/www/html/
+      
+  cas-secured-app-one:
+    build: cas-secured-app-one
+    image: cas-secured-app-one:latest
+    container_name: cnt-cas-secured-app-one
+    ports:
+      - 9001:9001
+      
+  saml-secured-app-one:
+    build: saml-secured-app-one
+    image: saml-secured-app-one:latest
+    container_name: cnt-saml-secured-app-one
+    ports:
+      - 9002:9002
+  
+  saml-client-shibboleth-sp:
+    build: saml-client-shibboleth-sp
+    image: saml-client-shibboleth-sp:latest
+    container_name: cnt-saml-client-shibboleth-sp
+    ports:
+      - 443:443
+      - 80:80
+  

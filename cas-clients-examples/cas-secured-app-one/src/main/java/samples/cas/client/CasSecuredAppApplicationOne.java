@@ -23,75 +23,75 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 @SpringBootApplication
 public class CasSecuredAppApplicationOne {
 
-	private static final String SERVICE_NAME = "https://localhost:9001/login/cas";
-	private static final String CAS_SERVER_URL = "https://localhost:8443/cas";
-	private static final String CAS_SERVER_URL_LOGIN = CAS_SERVER_URL + "/login";
-	private static final String CAS_SERVER_URL_LOGOUT = CAS_SERVER_URL + "/logout";
+    private static final String SERVICE_NAME = "https://localhost:9001/login/cas";
+    private static final String CAS_SERVER_URL = "https://casdev.company.com:8443/cas";
+    private static final String CAS_SERVER_URL_LOGIN = CAS_SERVER_URL + "/login";
+    private static final String CAS_SERVER_URL_LOGOUT = CAS_SERVER_URL + "/logout";
 
-	public static void main(String[] args) {
-		SpringApplication.run(CasSecuredAppApplicationOne.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(CasSecuredAppApplicationOne.class, args);
+    }
 
-	@Bean
-	public ServiceProperties serviceProperties() {
-		final ServiceProperties serviceProperties = new ServiceProperties();
-		serviceProperties.setService(SERVICE_NAME);
-		serviceProperties.setSendRenew(false);
-		return serviceProperties;
-	}
+    @Bean
+    public ServiceProperties serviceProperties() {
+        final ServiceProperties serviceProperties = new ServiceProperties();
+        serviceProperties.setService(SERVICE_NAME);
+        serviceProperties.setSendRenew(false);
+        return serviceProperties;
+    }
 
-	@Bean
-	@Primary
-	public AuthenticationEntryPoint authenticationEntryPoint(ServiceProperties sP) {
-		final CasAuthenticationEntryPoint entryPoint = new CasAuthenticationEntryPoint();
-		entryPoint.setLoginUrl(CAS_SERVER_URL_LOGIN);
-		entryPoint.setServiceProperties(sP);
-		return entryPoint;
-	}
+    @Bean
+    @Primary
+    public AuthenticationEntryPoint authenticationEntryPoint(ServiceProperties sP) {
+        final CasAuthenticationEntryPoint entryPoint = new CasAuthenticationEntryPoint();
+        entryPoint.setLoginUrl(CAS_SERVER_URL_LOGIN);
+        entryPoint.setServiceProperties(sP);
+        return entryPoint;
+    }
 
-	@Bean
-	public TicketValidator ticketValidator() {
-		return new Cas30ServiceTicketValidator(CAS_SERVER_URL);
-	}
+    @Bean
+    public TicketValidator ticketValidator() {
+        return new Cas30ServiceTicketValidator(CAS_SERVER_URL);
+    }
 
-	@Bean
-	public CasAuthenticationProvider casAuthenticationProvider() {
-		final CasAuthenticationProvider provider = new CasAuthenticationProvider();
-		provider.setServiceProperties(serviceProperties());
-		provider.setTicketValidator(ticketValidator());
+    @Bean
+    public CasAuthenticationProvider casAuthenticationProvider() {
+        final CasAuthenticationProvider provider = new CasAuthenticationProvider();
+        provider.setServiceProperties(this.serviceProperties());
+        provider.setTicketValidator(this.ticketValidator());
 
-		provider.setUserDetailsService(
-				s -> new User("casuser", "Mellon", true, true, true, true,
-						AuthorityUtils.createAuthorityList("ROLE_ADMIN")));
-		provider.setKey("CAS_PROVIDER_LOCALHOST_9001");
+        provider.setUserDetailsService(
+                s -> new User("casuser", "Mellon", true, true, true, true,
+                        AuthorityUtils.createAuthorityList("ROLE_ADMIN")));
+        provider.setKey("CAS_PROVIDER_LOCALHOST_9001");
 
-		return provider;
-	}
+        return provider;
+    }
 
 
-	@Bean
-	public SecurityContextLogoutHandler securityContextLogoutHandler() {
-		return new SecurityContextLogoutHandler();
-	}
+    @Bean
+    public SecurityContextLogoutHandler securityContextLogoutHandler() {
+        return new SecurityContextLogoutHandler();
+    }
 
-	@Bean
-	public LogoutFilter logoutFilter() {
-		final LogoutFilter logoutFilter = new LogoutFilter(
-				CAS_SERVER_URL_LOGOUT, securityContextLogoutHandler());
-		logoutFilter.setFilterProcessesUrl("/logout/cas");
-		return logoutFilter;
-	}
+    @Bean
+    public LogoutFilter logoutFilter() {
+        final LogoutFilter logoutFilter = new LogoutFilter(
+                CAS_SERVER_URL_LOGOUT, this.securityContextLogoutHandler());
+        logoutFilter.setFilterProcessesUrl("/logout/cas");
+        return logoutFilter;
+    }
 
-	@Bean
-	public SingleSignOutFilter singleSignOutFilter() {
-		final SingleSignOutFilter singleSignOutFilter = new SingleSignOutFilter();
-		singleSignOutFilter.setCasServerUrlPrefix(CAS_SERVER_URL);
-		singleSignOutFilter.setIgnoreInitConfiguration(true);
-		return singleSignOutFilter;
-	}
+    @Bean
+    public SingleSignOutFilter singleSignOutFilter() {
+        final SingleSignOutFilter singleSignOutFilter = new SingleSignOutFilter();
+        singleSignOutFilter.setCasServerUrlPrefix(CAS_SERVER_URL);
+        singleSignOutFilter.setIgnoreInitConfiguration(true);
+        return singleSignOutFilter;
+    }
 
-	@EventListener
-	public SingleSignOutHttpSessionListener singleSignOutHttpSessionListener(HttpSessionEvent event) {
-		return new SingleSignOutHttpSessionListener();
-	}
+    @EventListener
+    public SingleSignOutHttpSessionListener singleSignOutHttpSessionListener(HttpSessionEvent event) {
+        return new SingleSignOutHttpSessionListener();
+    }
 }
