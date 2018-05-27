@@ -7,7 +7,7 @@
 #
 #
 echo "** Removing old config from /etc/cas/"
-rm -rf /etc/cas/*.*
+rm -rf /etc/cas/*
 
 cd cas-server-overlay
 ./build.sh copy

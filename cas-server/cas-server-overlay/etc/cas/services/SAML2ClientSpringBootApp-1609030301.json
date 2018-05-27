@@ -1,10 +1,10 @@
 {
   "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
   "serviceId" : "^https://localhost:9002(\\z|/.*)",
-  "name" : "SamlClientSpringBootApp: SpringBoor APP Secured By SAML",
+  "name" : "SamlClientSpringBootApp: SpringBoot APP Secured By SAML",
   "id" : 1609030301,
   "description" : "CAS development SpringBoot application with username/password protection",
-  "metadataLocation" : "https://localhost/Shibboleth.sso/Metadata",
+  "metadataLocation" : "https://localhost:9002/saml/metadata",
   "attributeReleasePolicy" : {
     "@class" : "org.apereo.cas.services.ReturnMappedAttributeReleasePolicy",
     "allowedAttributes" : {
