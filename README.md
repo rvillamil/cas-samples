@@ -22,19 +22,21 @@ Me he apoyado en la siguiente documentacion :
 * [The new School] (https://dacurry-tns.github.io/deploying-apereo-cas/building_server_configure-server-properties.html)
 
 
-## Instalacion
+## Instalacion de la parte servidora
+0 - Incluir en el fichero de /etc/hosts lo siguiente:
 
-1 - Para las pruebas en LOCAL, se require que tengas instalado el certificado en el almacen de claves de tu equipo, porque si no, la aplicacion cliente va a dar problemas con el protocolo SSL
+127.0.0.1 casdev.company.com casdev.company.com casclient1.company.com casclient2.company.com samlclient1.company.com samlclient2.company.com
+
+Es mas facil de seguir con nombres de dominio
+
+1 - Regenerar los certificados, utilizando la password 'changeit' para las preguntas que te solicite:
 
 ```bash
-$sudo keytool -import -alias casCert -storepass changeit -file etc/cas/cas.crt -keystore ${JAVA_HOME}/jre/lib/security/cacerts
+$gen-cert.sh
 ```
 
-Nota: Si hay problemas con el alias 'casCert', eliminar el alias de la siguiente forma:
+NOTA: Este scripr incluye los certificados en el almacen de claves de tu equipo, porque si no, la aplicacion cliente va a dar problemas con el protocolo SSL
 
-```bash
-$sudo keytool -delete -alias casCert -keystore ${JAVA_HOME}/jre/lib/security/cacerts -storepass changeit
-```
 
 2 - Config application server with defaults pors 8080 y 8443 and ensure the keystore is loaded up with keys and certificates of the server
 
@@ -44,7 +46,7 @@ e.g. TOMCAT 8.5 server.xml in Tomcat 8.X:
 <Connector SSLEnabled="true" maxThreads="150" port="8443"
        protocol="org.apache.coyote.http11.Http11NioProtocol">
         <SSLHostConfig>
-            <Certificate certificateKeystoreFile="/etc/cas/caskeystore"
+            <Certificate certificateKeystoreFile="/etc/cas/thekeystore"
                    keystorePass="changeit" type="RSA"/>
         </SSLHostConfig>
     </Connector>
@@ -66,13 +68,6 @@ $./build package
 $./build copy
 
 
-6 - En el directorio `cas-server/cas-services-bootadminserver-overlay/`, ejecutar los comandos
-
-```bash
-$./build package
-$./build run
-```
-
 5 - On a successful deployment via the following methods:
 
 - CAS will be available at:
@@ -85,9 +80,6 @@ $./build run
   - `http://localhost:8080/cas-management`
   - `https://localhost:8443/cas-management`
 
-- Spring Boot applications admin, will be available at:
-
-  - `https://localhost:8444/`
 
 6 - Default user and password:
 
@@ -97,8 +89,9 @@ $./build run
 Importante, Cada vez que cambiemos algún fichero de condiguración de cas o cas-management, ejecutar el comando que copia a `/etc/cas` la configuración:
 
 ```bash
-$./build copy
+$./deploy-config.sh
 ```
+
 # Aplicaciones cliente
 
 ## cas-secured-app-one

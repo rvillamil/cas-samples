@@ -9,9 +9,9 @@
 #
 path_cacerts="${JAVA_HOME}/jre/lib/security/cacerts"
 current_path_certs=${path_cacerts}
-keystore_path="../etc/cas/caskeystore"
-cas_cert_path="../etc/cas/cas.crt"
-deploy_path="../etc/cas/"
+keystore_path="cas-server-overlay/etc/cas/thekeystore"
+cas_cert_path="cas-server-overlay/etc/cas/cas.crt"
+deploy_path="cas-server-overlay/etc/cas/"
 cas_cert_alias="casCert"
 store_pass="changeit"
 

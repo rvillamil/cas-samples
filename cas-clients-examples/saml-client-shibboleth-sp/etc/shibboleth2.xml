@@ -20,7 +20,7 @@
     -->
 
     <!-- The ApplicationDefaults element is where most of Shibboleth's SAML bits are defined. -->
-    <ApplicationDefaults entityID="https://localhost/shibboleth"
+    <ApplicationDefaults entityID="https://samlclient1.company.com/shibboleth"
                          REMOTE_USER="uid" attributePrefix="SAML_">
 
         <!--
@@ -41,7 +41,7 @@
             (Set discoveryProtocol to "WAYF" for legacy Shibboleth WAYF support.)
             You can also override entityID on /Login query string, or in RequestMap/htaccess.
             -->
-            <SSO entityID="https://localhost:8443/cas/idp">
+            <SSO entityID="https://casdev.company.com:8443/cas/idp">
               SAML2 SAML1
             </SSO>
 
@@ -65,7 +65,7 @@
         Allows overriding of error template information/filenames. You can
         also add attributes with values that can be plugged into the templates.
         -->
-        <Errors supportContact="root@localhost"
+        <Errors supportContact="rodrigo.villamil@gmail.com"
             helpLocation="/about.html"
             styleSheet="/shibboleth-sp/main.css"/>
 
@@ -89,7 +89,7 @@
         -->
 
         <MetadataProvider type="XML" validate="true"
-          uri="https://localhost:8443/cas/idp/metadata"
+          uri="https://casdev.company.com:8443/cas/idp/metadata"
           backingFilePath="casdev-metadata.xml" reloadInterval="7200">
         </MetadataProvider>
 

@@ -1,10 +1,10 @@
 {
   "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
-  "serviceId" : "https://localhost/shibboleth",
-  "name" : "SamlClientShibbolethSP: Apache Secured By SAML",
+  "serviceId" : "https://samlclient1.company.com/shibboleth",
+  "name" : "SAML2ClientShibbolethSP: Apache Secured By SAML",
   "id" : 1509030300,
   "description" : "CAS development Apache mod_shib/shibd server with username/password protection",
-  "metadataLocation" : "https://localhost/Shibboleth.sso/Metadata",
+  "metadataLocation" : "https://samlclient1.company.com/Shibboleth.sso/Metadata",
   "attributeReleasePolicy" : {
     "@class" : "org.apereo.cas.services.ReturnMappedAttributeReleasePolicy",
     "allowedAttributes" : {
@@ -19,5 +19,5 @@
       "UDC_IDENTIFIER": "urn:newschool:attribute-def:UDC_IDENTIFIER"
     }
   },
-  "evaluationOrder" : 20
+  "evaluationOrder" : 40
 }

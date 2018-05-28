@@ -4,5 +4,5 @@
   "name" : "CAS Admin Dashboard",
   "id" : 1509646291,
   "description" : "CAS dashboard and administrative endpoints",
-  "evaluationOrder" : 30
+  "evaluationOrder" : 20
 }
