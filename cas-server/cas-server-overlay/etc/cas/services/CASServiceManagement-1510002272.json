@@ -1,6 +1,6 @@
 {
   "@class" : "org.apereo.cas.services.RegexRegisteredService",
-  "serviceId" : "^https://casdev.company.com:8443/cas-management(\\z|/.*)",
+  "serviceId" : "https://casdev.company.com:8443/cas-management(\\z|/.*)",
   "name" : "CAS Services Management",
   "id" : 1510002272,
   "description" : "CAS services management webapp",

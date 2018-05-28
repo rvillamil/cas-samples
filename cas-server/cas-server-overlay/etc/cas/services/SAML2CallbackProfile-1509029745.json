@@ -6,3 +6,4 @@
   "description" :       "The CAS SAML IdP creates this endpoint as part of its initialization process at server startup time.  If the service registry doesn't already, contain an entry whose serviceId matches the endpoint, CAS will create a new service definition and save it to the registry",
   "evaluationOrder" :   10
 }
+

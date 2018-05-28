@@ -1,8 +1,8 @@
 {
   "@class" : "org.apereo.cas.services.RegexRegisteredService",
-  "serviceId" : "^https://localhost:9001(\\z|/.*)",
+  "serviceId" : "https://casclient2.company.com:9001(\\z|/.*)",
   "name" : "CAS Client Spring Boot App",
   "id" : 1610042273,
   "description" : "CAS Client Spring Boot Application",
-  "evaluationOrder" : 60
+  "evaluationOrder" : 70
 }

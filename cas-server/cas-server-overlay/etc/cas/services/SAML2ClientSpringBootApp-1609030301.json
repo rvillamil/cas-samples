@@ -1,10 +1,10 @@
 {
   "@class" : "org.apereo.cas.support.saml.services.SamlRegisteredService",
   "serviceId" : "https://samlclient2.company.com:9002(\\z|/.*)",
-  "name" : "SamlClientSpringBootApp: SpringBoot APP Secured By SAML",
+  "name" : "SAML2ClientSpringBootApp: SpringBoot APP Secured By SAML",
   "id" : 1609030301,
   "description" : "CAS development SpringBoot application with username/password protection",
-  "metadataLocation" : "https://samlclient2.company.com/saml/metadata",
+  "metadataLocation" : "https://samlclient2.company.com:9002/saml/metadata",
   "attributeReleasePolicy" : {
     "@class" : "org.apereo.cas.services.ReturnMappedAttributeReleasePolicy",
     "allowedAttributes" : {
@@ -19,5 +19,5 @@
       "UDC_IDENTIFIER": "urn:newschool:attribute-def:UDC_IDENTIFIER"
     }
   },
-  "evaluationOrder" : 20
+  "evaluationOrder" : 60
 }
