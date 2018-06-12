@@ -27,3 +27,38 @@ Aplicación desplegada en un apache, que hace de SAML2 'service provider' gracia
 ```bash
 127.0.0.1 casdev.company.com casclient1.company.com casclient2.company.com samlclient1.company.com samlclient2.company.com
 ```
+
+## Soporte para docker
+
+En el directorio raiz tenemos un docker-compose con todo lo necesario. 
+
+Se requiere que antes se hayan compilado los servicios detallados en el docker compose, para generar las imagenes. 
+
+Una vez compilados los proyectos, ejecutamos:
+
+### Construir todos los contenedores
+
+```bash
+$ docker-compose build
+```
+
+### Arrancar todos los contenedores
+
+```bash
+$ docker-compose up
+```
+
+### Arrancar un contenedor especifico: 
+
+Ejemplo `saml-secured-app-one`
+
+```bash
+$ docker-compose up saml-secured-app-one
+```
+
+### Ejecutar una shell en el contenedor
+
+```bash
+$ docker exec -it cnt-saml-secured-app-one /bin/sh
+```
+
