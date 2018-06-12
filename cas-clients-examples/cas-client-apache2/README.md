@@ -32,6 +32,8 @@ sudo docker-compose down
 
 docker exec -i -t cnt-cas-client-apache2 /bin/bash
 
-After you run the command above you should be able to access http://localhost
-and https://localhost
+After you run the command above you should be able to access:
+
+`https://casclient1.company.com/casclient`
+
 
