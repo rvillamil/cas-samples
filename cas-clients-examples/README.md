@@ -28,13 +28,13 @@ Aplicación desplegada en un apache, que hace de SAML2 'service provider' gracia
 127.0.0.1 casdev.company.com casclient1.company.com casclient2.company.com samlclient1.company.com samlclient2.company.com
 ```
 
+- Ejecutar el comando 'buildAll.sh' que lo hace todo por ti
+
 ## Soporte para docker
 
-En el directorio raiz tenemos un docker-compose con todo lo necesario. 
+En el directorio raiz tenemos un docker-compose con todo lo necesario.
 
-Se requiere que antes se hayan compilado los servicios detallados en el docker compose, para generar las imagenes. 
-
-Una vez compilados los proyectos, ejecutamos:
+Las imagenes se contruyen utilizando el ultimo 'jar' generado.
 
 ### Construir todos los contenedores
 

@@ -1,6 +1,12 @@
 
 ## Preparación del entorno de desarrollo
 
+### Opción 1
+
+- Ejecutar el comando 'buildAll.sh' que lo hace todo por ti
+
+### Opción 2: Paso a paso
+
 - Compilar el servidor CAS, que se encuentra en el directorio `cas-server/cas-server-overlay`, ejecutar los comandos
 
 ```bash
@@ -19,7 +25,7 @@ $./build copy
 
 Mas información en el [README](cas-server/cas-services-management-overlay/README.md) del proyecto
 
-
+#### Desplegar en el servidor de aplicaciones ...
 - Desplegar ambos 'war' en el servidor de aplicaciones. Tanto el CAS, como el CAS Management estarán disponibles en:
 
   - `https://casdev.company.com:8443/cas`
@@ -39,11 +45,9 @@ $./deploy-config.sh
 
 ## Soporte para docker
 
-En el directorio raiz tenemos un docker-compose con todo lo necesario. 
+En el directorio raiz tenemos un docker-compose con todo lo necesario.
 
-Se requiere que antes se hayan compilado los servicios detallados en el docker compose, para generar las imagenes. 
-
-Una vez compilados los proyectos, ejecutamos:
+Las imagenes se contruyen utilizando el ultimo 'war' generado.
 
 ### Construir todos los contenedores
 
@@ -70,5 +74,3 @@ $ docker-compose up cas-server-overlay
 ```bash
 $ docker exec -it cnt-cas-server-overlay /bin/sh
 ```
-
-

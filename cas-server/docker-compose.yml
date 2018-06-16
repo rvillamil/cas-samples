@@ -1,17 +1,7 @@
 version: '2.0'
      
 services:
-   
-  cas-reverse-proxy:
-    build: cas-reverse-proxy
-    image: cas-reverse-proxy:latest
-    container_name: cnt-cas-reverse-proxy 
-    ports:
-      - 443:443
-      - 80:80
-    networks:
-      - casservernetwork
-    
+  
   cas-server-overlay:
     build: cas-server-overlay
     image: cas-server-overlay:latest
