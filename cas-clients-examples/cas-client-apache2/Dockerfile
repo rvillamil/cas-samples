@@ -14,6 +14,7 @@ LABEL maintainer "Rodrigo Villamil Perez <rodrigo.villamil@gmail.com>" descripti
 #                           PHP and APACHE support
 # ------------------------------------------------------------------------------
 RUN requirements="httpd mod_ssl php" \
+    && yum update -y \
     && yum install -y $requirements
 
 # ------------------------------------------------------------------------------
@@ -41,7 +42,6 @@ RUN echo '# Add by me ' >> /etc/httpd/conf/httpd.conf \
 #                           MOD_AUTH_CAS_SUPPORT
 # ------------------------------------------------------------------------------
 RUN requirements="httpd-devel openssl-devel libcurl-devel autoconf automake libtool" \
-    && yum update -y \
     && yum install -y $requirements
 
 # mod-auth-cas support from sources: https://iam.uconn.edu/mod_auth_cas-installation-and-configuration/
@@ -62,11 +62,6 @@ COPY etc/cas.conf /etc/httpd/conf.d/
 RUN mkdir -p /var/cache/httpd/mod_auth_cas \
     && chown apache.apache /var/cache/httpd/mod_auth_cas \
     && chmod 700 /var/cache/httpd/mod_auth_cas
-
-# ------------------------------------------------------------------------------
-#                           My web
-# ------------------------------------------------------------------------------
-ADD src/casclient/ /var/www/html
 
 # ------------------------------------------------------------------------------
 #                           Clean and finish

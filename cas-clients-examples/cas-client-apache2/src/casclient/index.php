@@ -9,7 +9,7 @@
   <body>
     <div class="container">
       <h1>Hello, World!</h1>
-        <p><big>The quick brown fox jumped over the lazy dogs.</big></p>
+        <p><big>The quick brown fox jumped over the lazy dogs!</big></p>
         <p><big>Click <a href="secured-by-cas/index.php">here</a> for some secure content.</big></p>
     </div>
   </body>

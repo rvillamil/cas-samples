@@ -6,9 +6,6 @@ This is a simple Dockerfile that uses the PHP-Apache image and creates a self
 signed certificate to enable the default SSL. This is suitable for development
 and testing, not for production.
 
-Apache server is on Debug mode
-
-
 ## Usage
 
 Download the repository and use the docker compose to build and run the
