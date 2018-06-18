@@ -13,16 +13,20 @@ container:
 
 ###### Build container
 ```
-sudo docker-compose build
+docker-compose build
+
+###### Build container with PROXY support
+
+docker-compose build --build-arg proxy=http://14.56.78.90:8222 cas-client-apache2
 ```
 ###### Run container
 ```
-sudo docker-compose up
+docker-compose up
 ```
 
 ###### Remove container
 ```
-sudo docker-compose down
+docker-compose down
 ```
 
 ###### Run bas terminal

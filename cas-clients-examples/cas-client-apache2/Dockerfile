@@ -5,12 +5,12 @@ LABEL maintainer "Rodrigo Villamil Perez <rodrigo.villamil@gmail.com>" descripti
 
 # ------------------------------------------------------------------------------
 #                          Proxy Support
+#
+# e.g. 
+#   docker-compose build --build-arg proxy=http://14.56.78.90:8222 cas-client-apache2
 # ------------------------------------------------------------------------------
-RUN  echo 'proxy=http://89.167.129.32:80' >> /etc/yum.conf
-
-#RUN  echo 'Acquire::http { Proxy "http://89.167.129.32:80/"; };' >> /etc/apt/apt.conf.d/01proxy
-#RUN  echo 'Acquire::https { Proxy "http://89.167.129.32:80/"; };' >> /etc/apt/apt.conf.d/01proxy
-#RUN  echo 'APT::Get::Assume-Yes "true";' >> /etc/apt/apt.conf && echo 'APT::Get::force-yes "true";' >> /etc/apt/apt.conf
+ARG  proxy
+RUN if [ "x$proxy" = "x" ] ; then echo No proxy support; else echo "Set PROXY to ${proxy}" && echo "proxy=${proxy}" >> /etc/yum.conf; fi
 
 # ------------------------------------------------------------------------------
 #                           PHP and APACHE support
