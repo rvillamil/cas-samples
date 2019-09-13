@@ -1,7 +1,8 @@
+# CAS Server y CAS Service management
 
-## Preparación del entorno de desarrollo
+## Preparación del entorno de desarrollo para  
 
-### Opción 1
+### Opción 1 : La mas sencilla
 
 - Ejecutar el comando 'buildAll.sh' que lo hace todo por ti
 
@@ -25,19 +26,33 @@ $./build copy
 
 Mas información en el [README](cas-server/cas-services-management-overlay/README.md) del proyecto
 
-#### Desplegar en el servidor de aplicaciones ...
-- Desplegar ambos 'war' en el servidor de aplicaciones. Tanto el CAS, como el CAS Management estarán disponibles en:
+## Desplegar en el servidor de aplicaciones: TOMCAT
 
-  - `https://casdev.company.com:8443/cas`
-  - `https://casdev.company.com:8443/cas-management`
+Desplegando ambos 'war' en el servidor de aplicaciones. Tanto el CAS, como el CAS Management estarán disponibles en:
 
-- Usuario y claves por defecto:
+- `https://casdev.company.com:8443/cas`
+- `https://casdev.company.com:8443/cas-management`
+
+El fichero **server.xml**  en la versión de Tomcat 8.X sería:
+
+```xml
+<Connector SSLEnabled="true" maxThreads="150" port="8443"
+       protocol="org.apache.coyote.http11.Http11NioProtocol">
+        <SSLHostConfig>
+            <Certificate certificateKeystoreFile="/etc/cas/thekeystore"
+                   keystorePass="changeit" type="RSA"/>
+        </SSLHostConfig>
+    </Connector>
+```
+
+El Usuario y la clave por defecto sería
+
 ```bash
  - username: casuser
  - password: Mellon
 ```
 
-- IMPORTANTE: Cada vez que cambiemos algún fichero de condiguración de cas o cas-management, ejecutar el comando que copia a `/etc/cas` la configuración:
+**IMPORTANTE**: Cada vez que cambiemos algún fichero de condiguración de cas o cas-management, ejecutar el comando que copia a `/etc/cas` la configuración:
 
 ```bash
 $./deploy-config.sh
@@ -47,7 +62,7 @@ $./deploy-config.sh
 
 En el directorio raiz tenemos un docker-compose con todo lo necesario.
 
-Las imagenes se contruyen utilizando el ultimo 'war' generado.
+Las imágenes se construyen utilizando el ultimo 'war' generado.
 
 ### Construir todos los contenedores
 
