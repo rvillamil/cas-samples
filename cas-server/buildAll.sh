@@ -25,5 +25,5 @@ cd cas-services-management-overlay
 ./build.sh copy 
 cd -
 
-echo "** Generating docker images..."
-docker-compose build
+#echo "** Generating docker images..."
+#docker-compose build
