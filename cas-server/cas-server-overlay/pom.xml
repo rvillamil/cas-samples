@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd ">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.apereo.cas</groupId>
@@ -138,34 +139,37 @@
 					</dependency> <dependency> <groupId>org.apereo.cas</groupId> <artifactId>cas-server-support-jdbc-drivers</artifactId> 
 					<version>${cas.version}</version> </dependency> -->
 
-				
-				<!-- SAML1.1 / SAML2 Identity Provider 
-				
-				 There are two different SAML dependencies: 
-				 cas-server-support-saml enables support for returning 
-				 user attributes to client applications;
-                 cas-server-support-saml-idp enables support for using the CAS 
-                 server as a SAML2 Identity Provider. 
-                 Both dependencies should be included in pom.xml.-->				
+
+				<!-- SAML1.1 / SAML2 Identity Provider There are two different SAML dependencies: 
+					cas-server-support-saml enables support for returning user attributes to 
+					client applications; cas-server-support-saml-idp enables support for using 
+					the CAS server as a SAML2 Identity Provider. Both dependencies should be 
+					included in pom.xml. -->
 				<dependency>
 					<groupId>org.apereo.cas</groupId>
 					<artifactId>cas-server-support-saml</artifactId>
 					<version>${cas.version}</version>
 				</dependency>
-				
+
 				<dependency>
 					<groupId>org.apereo.cas</groupId>
 					<artifactId>cas-server-support-saml-idp</artifactId>
 					<version>${cas.version}</version>
 				</dependency>
-				
+
 				<!-- Delegate autenticaction in SAML2 providers, OAuth providers.. -->
-                <dependency>
-                    <groupId>org.apereo.cas</groupId>
-                    <artifactId>cas-server-support-pac4j-webflow</artifactId>
-                    <version>${cas.version}</version>
-                </dependency>
-				
+				<dependency>
+					<groupId>org.apereo.cas</groupId>
+					<artifactId>cas-server-support-pac4j-webflow</artifactId>
+					<version>${cas.version}</version>
+				</dependency>
+
+				<!-- OpenID Connect Supprt -->
+				<dependency>
+					<groupId>org.apereo.cas</groupId>
+					<artifactId>cas-server-support-oidc</artifactId>
+					<version>${cas.version}</version>
+				</dependency>
 
 			</dependencies>
 		</profile>
