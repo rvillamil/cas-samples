@@ -58,7 +58,7 @@
   }
   clientSecret: secret
   clientId: client
-  bypassApprovalPrompt: false
+  bypassApprovalPrompt: true
   generateRefreshToken: false
   jsonFormat: true
   jwks: " /etc/cas/oidc/keystore.jwks"
