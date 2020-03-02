@@ -5,15 +5,12 @@ import static org.junit.Assert.assertEquals;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.sun.xml.bind.v2.TODO;
-
-import samples.cas.client.mapper.ShowDtoToFilmMapper;
-import samples.cas.client.model.Film;
-import samples.cas.client.model.ShowDto;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import samples.cas.client.model.Film;
+import samples.cas.client.model.ShowDto;
 
 /**
  * The Class FilmSearcherTest.

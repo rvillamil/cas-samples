@@ -15,13 +15,11 @@ import samples.cas.client.model.Film;
 public class FilmsRepositoryH2Memory implements FilmsRepository {
 
 	private FilmsRepositoryJPAHelper filmsRepositoryJPAHelper;
-	private ShowDtoToFilmMapper	showDtoToFilmMapper;
 
 	@Autowired
 	public FilmsRepositoryH2Memory(FilmsRepositoryJPAHelper filmsRepositoryJPAHelper,
 								   ShowDtoToFilmMapper	showDtoToFilmMapper) {
 		this.filmsRepositoryJPAHelper = filmsRepositoryJPAHelper;
-		this.showDtoToFilmMapper = showDtoToFilmMapper;
 	}
 
 	@Override

@@ -3,7 +3,6 @@ package samples.cas.client.controller;
 import static org.junit.Assert.assertEquals;
 
 import java.net.URL;
-import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +14,6 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import samples.cas.client.model.ShowDto;
 
 /**
  * The Class ShowControllerIT.
@@ -84,7 +81,7 @@ public class ShowControllerIT {
 	// FIXME: Implementar el test
 	public void whenGetAllFilms_thenReturnJsonArrayWithAllFilms() throws Exception {
 		// When
-		String resourceUrl = this.urlBase +  "/shows";	
+		//String resourceUrl = this.urlBase +  "/shows";	
 		
 		//ResponseEntity<ShowDto[]> response = template.getForEntity(resourceUrl, ShowDto[].class);
 		
