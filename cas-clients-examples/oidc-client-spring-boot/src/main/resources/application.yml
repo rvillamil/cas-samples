@@ -1,0 +1,88 @@
+spring:  
+  application:
+    name: billboard
+  
+  flyway:
+    enabled: true 
+
+  jpa:
+    database: H2    
+    hibernate:
+      ddl-auto: none
+      generate-ddl: true
+      show-sql: true
+      
+  datasource:
+    url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+    username: root
+    password:
+    driver-class-name: org.h2.Driver
+  # http://www.baeldung.com/spring-testing-separate-data-source
+  # https://dzone.com/articles/integrate-h2-database-in-your-spring-boot-applicat  
+  h2:
+    console:
+    enabled: true
+    path: /h2
+    
+info:
+  app:
+    name: billboard # Mismo nombre que el artefacto
+    version: @project.version@
+    description: @project.description@
+    encoding: @project.build.sourceEncoding@
+    java:
+      version:@java.version@
+ 
+
+springdoc:
+  api-docs:
+    path: /openapi
+  swagger-ui:
+    path: /swagger-ui
+
+server:
+  port: 8080  # El puerto no varia por entorno, pues en docker mapearemos este u otro puerto hacia el exterior  
+
+logging:
+  config: classpath:log4j2.xml
+
+
+#
+# Soporte para Spring Boot Actuator
+#
+management:
+  # Exposing Actuator endpoints over HTTP: https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html
+  # management.endpoints.web.base-path=/
+  # management.endpoints.web.path-mapping.prometheus=whatever-you-want
+  endpoints:
+    web:
+      base-path: /
+      path-mapping:
+        metrics: metrics-json
+        prometheus: metrics
+      # https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-features.html#production-ready-endpoints-exposing-endpoints        
+      exposure:
+        include:
+        - health
+        - info
+        - metrics
+        - loggers
+        - env
+        - scheduledtasks
+        - caches
+        - prometheus
+        - flyway
+        
+  # El endpoint /health muestra mas detalle
+  endpoint:
+    health:
+      show-details: always
+   
+#
+# Propiedades externalizadas por entorno
+#        
+# - Ejemplo: El pais
+#
+environment:
+  description: PRO environment! # Es una propiedad que varia por entorno
+      
