@@ -1,6 +1,14 @@
 spring:  
   application:
     name: billboard
+   # security:    
+   #  oauth2:
+   #   client:
+   #     registration:                           
+   #       google: 
+   #         client-id: <client-id>
+   #         client-secret: <secret>
+      
   
   flyway:
     enabled: true 
@@ -85,4 +93,5 @@ management:
 #
 environment:
   description: PRO environment! # Es una propiedad que varia por entorno
-      
+  
+  

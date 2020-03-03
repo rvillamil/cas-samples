@@ -201,6 +201,14 @@
 			<version>${jackson.databind.nullable.version}</version>
 		</dependency>
 
+        <!-- The starter artifact aggregates all Spring Security
+         Client-related dependencies, including:
+        the spring-security-oauth2-client dependency for OAuth 2.0 Login and Client functionality
+        the JOSE library for JWT support  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-oauth2-client</artifactId>        
+        </dependency>
 	</dependencies>
 
 	<build>
