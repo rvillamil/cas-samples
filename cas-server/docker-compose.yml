@@ -10,12 +10,25 @@ services:
       - 8443:8443
       - 8080:8080
     volumes:
-      - ./cas-server-overlay/etc/cas:/etc/cas
+      - /etc/cas:/etc/cas
     networks:
         casservernetwork:
           aliases:
             - casdev.company.com
     
+
+  # A ver como hacemos para compartir la configuracion de /etc/cas ¿Volumen?
+# cas-services-management-overlay:
+#    build: cas-services-management-overlay
+#    image: cas-services-management-overlay:latest
+#    container_name: cnt-cas-services-management-overlay 
+#    ports:
+#      - 9443:8443
+#      - 9090:8080
+#    volumes:
+#      - /etc/cas:/etc/cas
+      
+
 networks:
   casservernetwork:
       driver: bridge

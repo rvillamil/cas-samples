@@ -39,7 +39,7 @@ El fichero **server.xml**  en la versión de Tomcat 8.X sería:
 <Connector SSLEnabled="true" maxThreads="150" port="8443"
        protocol="org.apache.coyote.http11.Http11NioProtocol">
         <SSLHostConfig>
-            <Certificate certificateKeystoreFile="/etc/cas/thekeystore"
+            <Certificate certificateKeystoreFile="/etc/cas/caskeystore"
                    keystorePass="changeit" type="RSA"/>
         </SSLHostConfig>
     </Connector>
@@ -71,6 +71,8 @@ $ docker-compose build
 ```
 
 ### Arrancar todos los contenedores
+
+Esto inicia los contenedores con la configuracion desplegada en /etc/cas . Si no estas seguro ejecuta el ./deploy-config.sh
 
 ```bash
 $ docker-compose up
