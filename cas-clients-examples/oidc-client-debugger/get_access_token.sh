@@ -1,4 +1,4 @@
-#!/bin/bash -vx
+#!/bin/bash
 #
 # Copyright (C) Rodrigo Villamil Perez 2019
 # Fichero: get_tokens.sh
@@ -7,7 +7,11 @@
 #
 #
 
-code="OC-2-QptIY3LvNvZWULXH7YmJ0M6BPvK0GoRt"
+#code="OC-1-bsbQAi-y3ehhSMAkC2-8iSzDDPcfrb5o"
+
+[ -z "${code}" ] && echo "Exporta la variable de entorno 'code' con el Authorization Code devuelto" && exit 1
+
+#code="OC-2-QptIY3LvNvZWULXH7YmJ0M6BPvK0GoRt"
 request="https://casdev.company.com:8443/cas/oidc/accessToken?grant_type=authorization_code&code=${code}&client=client&client_secret=secret&redirect_uri=https://oidcdebugger.com/debug"
 
 curl --noproxy -v -X POST ${request} \
