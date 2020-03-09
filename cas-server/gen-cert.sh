@@ -9,7 +9,7 @@
 #
 path_cacerts="${JAVA_HOME}/jre/lib/security/cacerts"
 current_path_certs=${path_cacerts}
-keystore_path="cas-server-overlay/etc/cas/thekeystore"
+keystore_path="cas-server-overlay/etc/cas/caskeystore"
 cas_cert_path="cas-server-overlay/etc/cas/cas.crt"
 deploy_path="cas-server-overlay/etc/cas/"
 cas_cert_alias="casCert"
@@ -23,6 +23,7 @@ sudo keytool -delete -alias ${cas_cert_alias} -keystore ${current_path_certs} -s
 
 # Generamos el certificado autofirmado, el almacen de claves y guardasmo el certificado autofirmado en dicho almacen
 DNAME="${DNAME:-CN=casdev.company.com,OU=casdev.company.com,O=casdev.company.com,C=ES}"
+
 echo "Generating keystore ${keystore_path} for CAS with DNAME '${DNAME}'"
 keytool -genkey -keyalg RSA -alias ${cas_cert_alias} -keystore ${keystore_path} -storepass ${store_pass} -validity 360 -keysize 2048 -dname ${DNAME}
 
