@@ -58,7 +58,7 @@
   }
   clientSecret: secret
   clientId: client
-  bypassApprovalPrompt: true
+  bypassApprovalPrompt: false
   generateRefreshToken: false
   jsonFormat: true
   jwks: " /etc/cas/oidc/keystore.jwks"
@@ -68,7 +68,7 @@
   idTokenEncryptionEncoding: AES_128_CBC_HMAC_SHA_256
   subjectType: public
   dynamicallyRegistered: false
-  implicit: false
+  implicit: true
   scopes:
   [
     java.util.HashSet

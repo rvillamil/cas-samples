@@ -47,7 +47,7 @@ e.g. server.xml in Tomcat 8.X:
 <Connector SSLEnabled="true" maxThreads="150" port="8443"
        protocol="org.apache.coyote.http11.Http11NioProtocol">
         <SSLHostConfig>
-            <Certificate certificateKeystoreFile="/etc/cas/thekeystore"
+            <Certificate certificateKeystoreFile="/etc/cas/caskeystore"
                    keystorePass="changeit" type="RSA"/>
         </SSLHostConfig>
     </Connector>

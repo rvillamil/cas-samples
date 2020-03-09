@@ -1,0 +1,48 @@
+version: '2.0'
+     
+services:
+
+
+  
+  # cas-server-overlay:
+  #   build: cas-server-overlay
+  #   image: cas-server-overlay:latest
+  #   container_name: cnt-cas-server-overlay 
+  #   ports:
+  #     - 8443:8443
+  #     - 8080:8080
+  #   volumes:
+  #     - /etc/cas:/etc/cas
+  #   networks:
+  #       casservernetwork:
+  #         aliases:
+  #           - casdev.company.com
+    
+
+  # A ver como hacemos para compartir la configuracion de /etc/cas ¿Volumen?
+# cas-services-management-overlay:
+#    build: cas-services-management-overlay
+#    image: cas-services-management-overlay:latest
+#    container_name: cnt-cas-services-management-overlay 
+#    ports:
+#      - 9443:8443
+#      - 9090:8080
+#    volumes:
+#      - /etc/cas:/etc/cas
+      
+
+# networks:
+#   casservernetwork:
+#       driver: bridge
+    
+  # A ver como hacemos para compartir la configuracion de /etc/cas ¿Volumen?
+  # cas-services-management-overlay:
+  #  build: cas-services-management-overlay
+   # image: cas-services-management-overlay:latest
+   # container_name: cnt-cas-services-management-overlay 
+   # ports:
+   #   - 8443:8443
+   #   - 8080:8080
+   # volumes:
+   #   - ./cas-services-management-overlay/etc/cas:/etc/cas
+      

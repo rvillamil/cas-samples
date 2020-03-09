@@ -24,7 +24,7 @@
 #done
 
 # El tomcat embebido usa por defecto otros nombres de claves, asi que la copiamos sin mas con el nombre que requiere
-ln -fs /etc/cas/caskeystore /etc/cas/thekeystore
+#ln -fs /etc/cas/caskeystore /etc/cas/thekeystore
 
 # Run application with container profile
 java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -Dspring.profiles.active=container -jar /cas.war
