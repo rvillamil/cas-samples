@@ -9,7 +9,7 @@ echo "** Creating deploy dir /etc/cas"
 mkdir -p /etc/cas
 
 echo "** Clean deploy dir /etc/cas"
-rm -rf /etc/cas/*
+sudo rm -rf /etc/cas/*
 
 echo "** Building 'cas-server-overlay'"
 cd cas-server-overlay
@@ -25,5 +25,6 @@ cd cas-services-management-overlay
 ./build.sh copy 
 cd -
 
-#echo "** Generating docker images..."
-#docker-compose build
+echo "** Generando contenedor Docker .."
+source docker-tools.sh
+docker_build

@@ -60,6 +60,30 @@ $./deploy-config.sh
 
 ## Soporte para docker
 
+Se trata de un contenedor con la imagen de CAS desplegada en un tomcat con la configuracion
+
+Para construir la imagen, entonces:
+
+- Primero cargamos las utilidades
+
+```bash
+$source docker-tools.sh
+```
+
+- Compilamos. Este paso no es necesario si previamente has hecho un 'build-all.sh'
+  
+```bash
+$docker_build
+```
+
+- Por ultimo, lanzamos el contenedor con la funcion que hemos cargado con las utilidades
+  
+```bash
+$docker_run
+```
+
+## Soporte para docker-compose : FIXME
+
 En el directorio raiz tenemos un docker-compose con todo lo necesario.
 
 Las imágenes se construyen utilizando el ultimo 'war' generado.
@@ -67,7 +91,7 @@ Las imágenes se construyen utilizando el ultimo 'war' generado.
 ### Construir todos los contenedores
 
 ```bash
-$ docker-compose build
+$docker-compose build
 ```
 
 ### Arrancar todos los contenedores
@@ -75,19 +99,19 @@ $ docker-compose build
 Esto inicia los contenedores con la configuracion desplegada en /etc/cas . Si no estas seguro ejecuta el ./deploy-config.sh
 
 ```bash
-$ docker-compose up
+$docker-compose up
 ```
 
-### Arrancar un contenedor especifico: 
+### Arrancar un contenedor especifico
 
 Ejemplo `cas-server-overlay`
 
 ```bash
-$ docker-compose up cas-server-overlay
+$docker-compose up cas-server-overlay
 ```
 
 ### Ejecutar una shell en el contenedor
 
 ```bash
-$ docker exec -it cnt-cas-server-overlay /bin/sh
+$docker exec -it cnt-cas-server-overlay /bin/sh
 ```
