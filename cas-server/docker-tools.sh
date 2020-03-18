@@ -1,14 +1,14 @@
 # 
 # LOCAL
 #
-export DOCKER_REGISTRY_URI="localhost:32000/arquitectura/samples/cas"
-export IMAGE_VERSION="latest"
+#export DOCKER_REGISTRY_URI="localhost:32000/arquitectura/samples/cas"
+#export IMAGE_VERSION="latest"
 
 # 
-# Desarrollo
+# Docker hub
 #
-#export DOCKER_REGISTRY_URI=""
-#export IMAGE_VERSION="1.0.0-SNAPSHOT"
+export DOCKER_REGISTRY_URI="rvillamil"
+export IMAGE_VERSION="latest"
 
 
 export IMAGE_NAME="cas-server-mngt"
@@ -26,11 +26,14 @@ echo ""
 echo "Ahora tienes disponibles estos comandos:"
 echo ""
 echo "docker_build ..: Compila el proyecto y genera la imagen docker en local"
-echo "$ "
 echo "docker_push ...: Sube la imagen a un docker registry que se encuentre en '${DOCKER_REGISTRY_URI}'"
 echo "docker_run ....: Lanza un contenedor de nombre '${CONTAINER_NAME}'. Si ya existe uno con ese nombre, lo borra"
-echo "    - Abir navegador en: http://127.0.0.1:${EXTERNAL_PORT}/actuator"
-echo "    - Para obtener las URLs de actuator: curl localhost:${EXTERNAL_PORT}/actuator  | jq"
+echo ""
+echo "    - Abir navegador en: https://localhost:8443/cas-management/"
+echo "    - User:       casuser"
+echo "    - Passwrod:   Mellon"
+echo ""
+echo "Para entrar a fisgar en el contenedor: $docker exec -it ${CONTAINER_NAME} /bin/sh"
 
 
 tool_dir=`pwd` # Para ejecutar el script fuera de este directorio

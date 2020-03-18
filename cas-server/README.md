@@ -82,36 +82,22 @@ $docker_build
 $docker_run
 ```
 
-## Soporte para docker-compose : FIXME
+### Publicar en docker-hub
 
-En el directorio raiz tenemos un docker-compose con todo lo necesario.
-
-Las imágenes se construyen utilizando el ultimo 'war' generado.
-
-### Construir todos los contenedores
+- Hacer login en la cuenta de docker-hub
 
 ```bash
-$docker-compose build
+$docker login
 ```
 
-### Arrancar todos los contenedores
-
-Esto inicia los contenedores con la configuracion desplegada en /etc/cas . Si no estas seguro ejecuta el ./deploy-config.sh
+- Publicar en docker-hub con:
 
 ```bash
-$docker-compose up
-```
-
-### Arrancar un contenedor especifico
-
-Ejemplo `cas-server-overlay`
-
-```bash
-$docker-compose up cas-server-overlay
+$docker_push
 ```
 
 ### Ejecutar una shell en el contenedor
 
 ```bash
-$docker exec -it cnt-cas-server-overlay /bin/sh
+$docker exec -it cas-server-mngt /bin/sh
 ```

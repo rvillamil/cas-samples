@@ -25,6 +25,9 @@ cd cas-services-management-overlay
 ./build.sh copy 
 cd -
 
+echo "** Creating and deploying certicates ''"
+./gen-cert.sh
+
 echo "** Generando contenedor Docker .."
 source docker-tools.sh
 docker_build
