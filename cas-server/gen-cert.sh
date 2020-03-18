@@ -14,11 +14,11 @@ cas_cert_path="/etc/cas/cas.crt"
 deploy_path="/etc/cas/"
 cas_cert_alias="casCert"
 store_pass="changeit"
+server_name="localhost"
 
 # Si no encuentra el comando SUDO suponemos que somos root
-echo "0 - Locating sudo command..."
 CMD_SUDO=$(whereis sudo | cut -d ' ' -f 2 | grep -v ":")
-echo "SUDO_COMMAND: ${CMD_SUDO}"
+echo "0 - Locating sudo command...:'${CMD_SUDO}'"
 
 echo "1 - Deleting previous alias in cacerts ..."
 ${CMD_SUDO} rm -fv ${keystore_path}
@@ -27,7 +27,7 @@ ${CMD_SUDO} keytool -delete -alias ${cas_cert_alias} -keystore ${current_path_ce
 
 
 # Generamos el certificado autofirmado, el almacen de claves y guardasmo el certificado autofirmado en dicho almacen
-DNAME="${DNAME:-CN=localhost,OU=casdev.company.com,O=casdev.company.com,C=ES}"
+DNAME="${DNAME:-CN=${server_name},OU=casdev.company.com,O=casdev.company.com,C=ES}"
 
 echo "2 - Generating keystore ${keystore_path} for CAS with DNAME '${DNAME}'"
 keytool -genkey -noprompt -keyalg RSA -alias ${cas_cert_alias} -keypass ${store_pass} -keystore ${keystore_path} -storepass ${store_pass} -validity 360 -keysize 2048 -dname ${DNAME}

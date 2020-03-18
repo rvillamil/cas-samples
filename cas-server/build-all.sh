@@ -29,5 +29,5 @@ echo "** Creating and deploying certicates ''"
 ./gen-cert.sh
 
 echo "** Generando contenedor Docker .."
-source docker-tools.sh
+source docker-tools.sh > /dev/null 2>&1
 docker_build

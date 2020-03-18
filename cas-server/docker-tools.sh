@@ -40,7 +40,6 @@ tool_dir=`pwd` # Para ejecutar el script fuera de este directorio
 
 function docker_build() {
     cd ${tool_dir}  > /dev/null 2>&1
-    #./buildAll.sh
     docker build -t ${DOCKER_REGISTRY_URI}/${IMAGE_NAME}:${IMAGE_VERSION} -f Dockerfile .
     cd -  > /dev/null 2>&1
 }
