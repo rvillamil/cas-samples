@@ -18,6 +18,9 @@
 		<Logger name="org.springframework.web" level="info" additivity="false">
 			<AppenderRef ref="Console-Appender" />
 		</Logger>
+		<Logger name="org.springframework.web.client.RestTemplate" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console-Appender" />
+        </Logger>
 		<Logger name="samples.cas.client" level="debug" additivity="false">
 			<AppenderRef ref="Console-Appender" />
 		</Logger>

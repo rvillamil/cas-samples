@@ -1,13 +1,16 @@
 spring:  
   application:
     name: billboard
-   # security:    
-   #  oauth2:
-   #   client:
-   #     registration:                           
-   #       google: 
-   #         client-id: <client-id>
-   #         client-secret: <secret>
+    security:  
+     oauth2:
+      client:
+        registration:                           
+          cas: 
+            client-id: client
+            client-secret: secret
+        provider:
+          cas:
+            issuer-uri: https://localhost:8443/cas/oidc
       
   
   flyway:
@@ -26,7 +29,7 @@ spring:
     password:
     driver-class-name: org.h2.Driver
   # http://www.baeldung.com/spring-testing-separate-data-source
-  # https://dzone.com/articles/integrate-h2-database-in-your-spring-boot-applicat  
+  # https://d zone.com/articles/integrate-h2-database-in-your-spring-boot-applicat  
   h2:
     console:
     enabled: true
