@@ -1,9 +1,9 @@
 {
   @class: org.apereo.cas.services.OidcRegisteredService
-  serviceId: http://localhost:4000
+  serviceId: http://localhost:4200
   name: "Angular OPENID Client"
   id: 1768529001549
-  description: OpenID client on http://localhost:4000 for openid testing purposes
+  description: OpenID client on http://localhost:4200 for OpenId Angular testing purposes
   expirationPolicy:
   {
     @class: org.apereo.cas.services.DefaultRegisteredServiceExpirationPolicy
