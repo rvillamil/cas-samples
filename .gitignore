@@ -239,5 +239,10 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Others..
+cas.crt
+thekeystore
+
 
 # End of https://www.gitignore.io/api/osx,vim,java,maven,linux,emacs,windows
+keystore.jwks

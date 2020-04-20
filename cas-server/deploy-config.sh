@@ -17,4 +17,6 @@ cd cas-services-management-overlay
 ./build.sh copy 
 cd -
 
+./gen-cert.sh
+
 echo "** Config deployed in /etc/cas **"

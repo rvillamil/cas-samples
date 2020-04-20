@@ -1,6 +1,6 @@
 {
   "@class" :            "org.apereo.cas.services.RegexRegisteredService",
-  "serviceId" :         "https://casdev.company.com:8443/cas/idp/profile/SAML2/Callback.+",
+  "serviceId" :         "https://localhost:8443/cas/idp/profile/SAML2/Callback.+",
   "name" :              "SAML Authentication Request",
   "id" :                1509029745,
   "description" :       "The CAS SAML IdP creates this endpoint as part of its initialization process at server startup time.  If the service registry doesn't already, contain an entry whose serviceId matches the endpoint, CAS will create a new service definition and save it to the registry",

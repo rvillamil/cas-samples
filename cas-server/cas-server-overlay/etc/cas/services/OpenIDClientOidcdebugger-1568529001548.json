@@ -1,0 +1,80 @@
+{
+  @class: org.apereo.cas.services.OidcRegisteredService
+  serviceId: https://oidcdebugger.com/debug
+  name: "OPENID Client on Oidcdebugger"
+  id: 1568529001548
+  description: OpenID client on https://oidcdebugger.com/ for openid testing purposes
+  expirationPolicy:
+  {
+    @class: org.apereo.cas.services.DefaultRegisteredServiceExpirationPolicy
+    deleteWhenExpired: false
+    notifyWhenDeleted: false
+  }
+  proxyPolicy:
+  {
+    @class: org.apereo.cas.services.RefuseRegisteredServiceProxyPolicy
+  }
+  evaluationOrder: -1
+  usernameAttributeProvider:
+  {
+    @class: org.apereo.cas.services.DefaultRegisteredServiceUsernameProvider
+    canonicalizationMode: NONE
+    encryptUsername: false
+  }
+  logoutType: BACK_CHANNEL
+  attributeReleasePolicy:
+  {
+    @class: org.apereo.cas.services.ReturnAllowedAttributeReleasePolicy
+    principalAttributesRepository:
+    {
+      @class: org.apereo.cas.authentication.principal.DefaultPrincipalAttributesRepository
+      expiration: 2
+      timeUnit: HOURS
+    }
+    consentPolicy:
+    {
+      @class: org.apereo.cas.services.consent.DefaultRegisteredServiceConsentPolicy
+      enabled: true
+    }
+    authorizedToReleaseCredentialPassword: false
+    authorizedToReleaseProxyGrantingTicket: false
+    excludeDefaultAttributes: false
+    authorizedToReleaseAuthenticationAttributes: true
+  }
+  multifactorPolicy:
+  {
+    @class: org.apereo.cas.services.DefaultRegisteredServiceMultifactorPolicy
+    failureMode: NOT_SET
+    bypassEnabled: false
+  }
+  accessStrategy:
+  {
+    @class: org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy
+    order: 0
+    enabled: true
+    ssoEnabled: true
+    requireAllAttributes: true
+    caseInsensitive: false
+  }
+  clientSecret: secret
+  clientId: client
+  bypassApprovalPrompt: false
+  generateRefreshToken: false
+  jsonFormat: true
+  jwks: " /etc/cas/oidc/keystore.jwks"
+  signIdToken: true
+  encryptIdToken: false
+  idTokenEncryptionAlg: A128GCMKW
+  idTokenEncryptionEncoding: AES_128_CBC_HMAC_SHA_256
+  subjectType: public
+  dynamicallyRegistered: false
+  implicit: true
+  scopes:
+  [
+    java.util.HashSet
+    [
+      profile_rodrigo
+    ]
+  ]
+  
+}
