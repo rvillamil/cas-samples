@@ -1,0 +1,15 @@
+{
+  "@class": "org.apereo.cas.services.OidcRegisteredService",
+  "clientId": "angular-app",
+  "clientSecret": "",
+  "serviceId": "http://+.rvp.local:.+/index.html",
+  "name": "OIDC auth code flow with PKCE for angular application running on cluster",
+  "id": 1001,
+  "attributeReleasePolicy" : {
+    "@class" : "org.apereo.cas.services.ReturnMappedAttributeReleasePolicy",
+    "allowedAttributes" : {
+      "@class" : "java.util.TreeMap",      
+      "groups" : "groovy { return ['WRITTER', 'READER'] }"
+    }
+  }
+}

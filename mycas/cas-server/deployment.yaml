@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:  
+  labels:
+    app: cas
+  name: cas
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cas
+  strategy: {}
+  template:
+    metadata:      
+      labels:
+        app: cas
+    spec:
+      containers:
+      - image: localhost:32000/mycas:latest
+        name: cas
+        resources: {}
+status: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: cas
+  name: cas
+spec:
+  ports:  
+  - name: 8443-8443
+    port: 8443
+    protocol: TCP
+    targetPort: 8443
+  - name: 9443-9443
+    port: 9443
+    protocol: TCP
+    targetPort: 9443
+  selector:
+    app: cas
+  type: ClusterIP
+status:
+  loadBalancer: {}
