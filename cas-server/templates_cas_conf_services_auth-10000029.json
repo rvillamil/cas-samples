@@ -1,0 +1,90 @@
+{
+  @class: org.apereo.cas.services.OidcRegisteredService
+  serviceId: https://auth-oidc.*.store.dgrp.io/.*
+  name: authmystore
+  id: 10000029
+  expirationPolicy:
+  {
+    @class: org.apereo.cas.services.DefaultRegisteredServiceExpirationPolicy
+    deleteWhenExpired: false
+    notifyWhenDeleted: false
+  }
+  proxyPolicy:
+  {
+    @class: org.apereo.cas.services.RefuseRegisteredServiceProxyPolicy
+  }
+  evaluationOrder: 0
+  usernameAttributeProvider:
+  {
+    @class: org.apereo.cas.services.DefaultRegisteredServiceUsernameProvider
+    canonicalizationMode: NONE
+    encryptUsername: false
+  }
+  logoutType: BACK_CHANNEL
+  attributeReleasePolicy:
+  {
+    @class: org.apereo.cas.services.ChainingAttributeReleasePolicy
+    mergingPolicy: add
+    policies:
+    [
+      java.util.ArrayList
+      [
+        {
+          @class: org.apereo.cas.services.ReturnAllAttributeReleasePolicy
+          principalAttributesRepository:
+          {
+            @class: org.apereo.cas.authentication.principal.DefaultPrincipalAttributesRepository
+          }
+          consentPolicy:
+          {
+            @class: org.apereo.cas.services.consent.DefaultRegisteredServiceConsentPolicy
+            enabled: true
+          }
+          authorizedToReleaseCredentialPassword: false
+          authorizedToReleaseProxyGrantingTicket: false
+          excludeDefaultAttributes: false
+          authorizedToReleaseAuthenticationAttributes: true
+        }
+        {
+          @class: org.apereo.cas.services.ReturnMappedAttributeReleasePolicy
+          allowedAttributes:
+          {
+            @class: java.util.TreeMap
+            groups: "groovy { return ['CASHIER', 'STORE_MANAGER', 'DEPARTMENT_MANAGER', 'INSPECTOR', 'STORE_HEAD', 'FRANCHISEE', 'MANAGER', 'ADMIN', 'SUPERADMIN', 'EXTERNAL', 'STOCKTAKING_MANAGER', 'CASHIER_FRANCHISEE', 'STORE_MANAGER_FRANCHISEE', 'DEPARTMENT_MANAGER_FRANCHISEE', 'STORE_HEAD_FRANCHISEE', 'PRINCIPAL_CASHIER', 'DIA_SYSTEMS', 'THIRD_PARTY'] }"
+          }
+        }
+      ]
+    ]
+  }
+  multifactorPolicy:
+  {
+    @class: org.apereo.cas.services.DefaultRegisteredServiceMultifactorPolicy
+    failureMode: UNDEFINED
+    bypassEnabled: false
+  }
+  accessStrategy:
+  {
+    @class: org.apereo.cas.services.DefaultRegisteredServiceAccessStrategy
+    order: 0
+    enabled: true
+    ssoEnabled: true
+    requireAllAttributes: true
+    caseInsensitive: false
+  }
+  accessTokenExpirationPolicy:
+  {
+    @class: org.apereo.cas.support.oauth.services.DefaultRegisteredServiceOAuthAccessTokenExpirationPolicy
+    maxTimeToLive: 600
+    timeToKill: 600
+  }  
+  clientSecret: {{ oidc_authmystore_client_secret }}
+  clientId: {{ oidc_authmystore_client_id }}
+  bypassApprovalPrompt: true
+  generateRefreshToken: true
+  jsonFormat: true
+  signIdToken: true
+  encryptIdToken: false
+  subjectType: public
+  dynamicallyRegistered: false
+  implicit: false
+}

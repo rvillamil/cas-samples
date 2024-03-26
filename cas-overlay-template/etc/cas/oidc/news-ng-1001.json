@@ -1,0 +1,8 @@
+{
+    "@class" : "org.apereo.cas.services.OidcRegisteredService",
+    "clientId": "news-ng",
+    "clientSecret": "secret",
+    "serviceId" : "http://localhost:4200",
+    "name": "OIDC",
+    "id": 1000
+  }
